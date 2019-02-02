@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Content/TypeGuards.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/Content</a> TypeGuards.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/30</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/11</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+<span class="cstat-no" title="statement not covered" >Object.defineProperty(exports, "__esModule", { value: true });</span>
+<span class="cstat-no" title="statement not covered" >exports.isDeferred = <span class="fstat-no" title="function not covered" >(f</span>ieldObject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return fieldObject &amp;&amp; fieldObject.__deferred &amp;&amp; fieldObject.__deferred.uri &amp;&amp; fieldObject.__deferred.uri.length &gt; 0 || false;</span>
+};
+<span class="cstat-no" title="statement not covered" >exports.isIContent = <span class="fstat-no" title="function not covered" >(o</span>bject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return object &amp;&amp; object.Id &amp;&amp; object.Path &amp;&amp; object.Type &amp;&amp; object.Type.length &gt; 0 || false;</span>
+};
+<span class="cstat-no" title="statement not covered" >exports.isContent = <span class="fstat-no" title="function not covered" >(o</span>bject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return object &amp;&amp; object.Id &amp;&amp; object.Path &amp;&amp; object.Type &amp;&amp; object.Type.length &gt; 0 &amp;&amp; object.options &amp;&amp; exports.isIContent(object.options) || false;</span>
+};
+<span class="cstat-no" title="statement not covered" >exports.isIContentList = <span class="fstat-no" title="function not covered" >(o</span>bjectList) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return objectList &amp;&amp; objectList.length !== undefined &amp;&amp; objectList.find(<span class="fstat-no" title="function not covered" >(o</span>) =&gt; <span class="cstat-no" title="statement not covered" >!exports.isIContent(o))</span> === undefined || false;</span>
+};
+<span class="cstat-no" title="statement not covered" >exports.isSavedContent = <span class="fstat-no" title="function not covered" >(c</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return c &amp;&amp; c.Id &amp;&amp; c.Path &amp;&amp; c.Path.length &amp;&amp; c.Name &amp;&amp; c.Name.length &gt; 0 || false;</span>
+};
+//# sourceMappingURL=TypeGuards.js.map</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Oct 31 2017 15:27:48 GMT+0100 (Central Europe Standard Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

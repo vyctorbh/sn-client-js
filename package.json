@@ -1,0 +1,122 @@
+{
+  "_args": [
+    [
+      "sn-client-js@3.0.3",
+      "C:\\Projetos\\Outros\\Angular\\hr\\ClientApp"
+    ]
+  ],
+  "_from": "sn-client-js@3.0.3",
+  "_id": "sn-client-js@3.0.3",
+  "_inBundle": false,
+  "_integrity": "sha512-xoS59sORVeIUoWja7Sxv/9aA62NFjoSEIgmAqGxJ/pDqwXB9ulBSSdEI2U5rHD2FUPnFng9sVowL8W9GFjxFrA==",
+  "_location": "/sn-client-js",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "sn-client-js@3.0.3",
+    "name": "sn-client-js",
+    "escapedName": "sn-client-js",
+    "rawSpec": "3.0.3",
+    "saveSpec": null,
+    "fetchSpec": "3.0.3"
+  },
+  "_requiredBy": [
+    "/",
+    "/sn-client-auth-google"
+  ],
+  "_resolved": "https://registry.npmjs.org/sn-client-js/-/sn-client-js-3.0.3.tgz",
+  "_spec": "3.0.3",
+  "_where": "C:\\Projetos\\Outros\\Angular\\hr\\ClientApp",
+  "author": {
+    "name": "Sense/Net",
+    "email": "snteam@sensenet.com",
+    "url": "http://sensenet.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/SenseNet/sn-client-js/issues"
+  },
+  "config": {
+    "commitizen": {
+      "path": "sensenet-kfi-cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "nyc": "^11.0.2",
+    "rxjs": "^5.5.2",
+    "sensenet-kfi-cz-conventional-changelog": "^1.0.0"
+  },
+  "description": "A JavaScript client for Sense/Net ECM that makes it easy to use the REST API of the Content Repository.",
+  "devDependencies": {
+    "@types/app-root-path": "1.2.4",
+    "@types/chai": "4.0.10",
+    "@types/mocha": "2.2.44",
+    "@types/node": "^8.0.0",
+    "chai": "4.1.2",
+    "codecov": "^3.0.0",
+    "commitizen": "2.9.6",
+    "mocha": "4.0.1",
+    "mocha-typescript": "^1.0.23",
+    "rimraf": "^2.6.1",
+    "tslint": "^5.8.0",
+    "tslint-consistent-codestyle": "^1.10.2",
+    "typedoc": "^0.9.0",
+    "typedoc-plugin-external-module-name": "^1.0.9",
+    "typescript": "^2.6.1"
+  },
+  "files": [
+    "dist",
+    "src",
+    "test",
+    "documentation",
+    "coverage"
+  ],
+  "homepage": "https://sensenet.com",
+  "keywords": [
+    "sensenet",
+    "ecm",
+    "javascript",
+    "REST",
+    "ajax",
+    "API"
+  ],
+  "license": "GPL-2.0",
+  "main": "dist/src/SN.js",
+  "name": "sn-client-js",
+  "nyc": {
+    "exclude": [
+      "dist/test/**/*.*",
+      "dist/src/**/I*.js"
+    ],
+    "include": "dist/src/**/*.*",
+    "check-coverage": true,
+    "cache": true,
+    "all": true,
+    "reporter": [
+      "lcov",
+      "text-summary",
+      "json"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SenseNet/sn-client-js.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check-coverage": "istanbul check-coverage ",
+    "clean": "rimraf dist",
+    "commit": "git-cz",
+    "lint": "tslint --project tsconfig.json",
+    "prebuild": "npm run lint && npm run clean",
+    "precommit": "npm run lint",
+    "pretest": "npm run build",
+    "publish:development": "npm t && npm run typedoc && npm publish --tag development",
+    "report-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codecov",
+    "semantic-release": "semantic-release pre && semantic-release post",
+    "test": "nyc mocha -p tsconfig.json dist/test/index.js",
+    "typedoc": "typedoc --mode modules --tsconfig ./tsconfig.typedoc.json --out documentation --excludePrivate --theme default --readme readme.md ./src"
+  },
+  "typings": "./dist/src/SN.d.ts",
+  "version": "3.0.3"
+}

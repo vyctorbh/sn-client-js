@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for sn-client-js/src/Authentication/TokenStore.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">sn-client-js/src/Authentication</a> TokenStore.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>54/54</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.11% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>41/45</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>12/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>54/54</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">186x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">157x</span>
+<span class="cline-any cline-yes">157x</span>
+<span class="cline-any cline-yes">157x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">141x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">113x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">115x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @module Authentication
+ */ /** */
+import { Token, TokenPersist, TokenStoreType } from './';
+&nbsp;
+/**
+ * Indicates the type of the token
+ */
+export type TokenType = 'access' | 'refresh';
+&nbsp;
+&nbsp;
+/**
+ * This class is intended to store token data in LocalStorage or in-memory storage.
+ */
+export class TokenStore {
+&nbsp;
+    /**
+    * @param {strnig} baseUrl The Base URL to the related site
+    * @param {string} keyTemplate The template to use when generating keys in the local/session storage or for a cookie. ${siteName} and ${tokenName} will be replaced. Example: 'sn-${siteName}-${tokenName}'
+    * @param {TokenPersist} tokenPersist Setting that indicates if the token should be persisted per session (browser close) or per Token expiration (based on the token `exp` property)
+    * @param {Partial&lt;Document&gt;} documentRef The Document reference (used by unit tests)
+    * @param {Storage} localStorageRef The localStorage reference (used by unit tests)
+    * @param {Storage} sessionStorageRef The sessionStorage reference (used by unit tests)
+     */
+    constructor(private readonly baseUrl: string,
+        private readonly keyTemplate: string,
+        private readonly tokenPersist: TokenPersist,
+        private documentRef = (typeof document === 'object') ? <span class="branch-0 cbranch-no" title="branch not covered" >document </span>: undefined,
+        private localStorageRef = (typeof localStorage === 'object') ? <span class="branch-0 cbranch-no" title="branch not covered" >localStorage </span>: undefined,
+        private sessionStorageRef = (typeof sessionStorage === 'object') ? <span class="branch-0 cbranch-no" title="branch not covered" >sessionStorage </span>: undefined) {
+        let storesAvailable = (typeof this.localStorageRef !== 'undefined' &amp;&amp; typeof this.sessionStorageRef !== 'undefined');
+        let cookieAvailable = (typeof this.documentRef !== 'undefined' &amp;&amp; typeof this.documentRef.cookie !== 'undefined');
+&nbsp;
+        if (!storesAvailable &amp;&amp; !cookieAvailable) {
+            this.TokenStoreType = TokenStoreType.InMemory;
+        } else if (this.tokenPersist === TokenPersist.Expiration) {
+            storesAvailable ? this.TokenStoreType = TokenStoreType.LocalStorage : this.TokenStoreType = TokenStoreType.ExpirationCookie;
+        } else {
+            storesAvailable ? this.TokenStoreType = TokenStoreType.SessionStorage : this.TokenStoreType = TokenStoreType.SessionCookie;
+        }
+    }
+&nbsp;
+    /**
+     * If localStorage is not available, stores the token data in this in-memory array
+     */
+    private innerStore: string[] = [];
+&nbsp;
+    /**
+     * The type of the generated Token Store
+     */
+    public readonly TokenStoreType: TokenStoreType;
+&nbsp;
+    private getStoreKey(key: TokenType) {
+        return this.keyTemplate.replace('${siteName}', this.baseUrl).replace('${tokenName}', key);
+    }
+&nbsp;
+    private getTokenFromCookie(key: string, document: Document): Token {
+        const prefix = key + '=';
+        if (document &amp;&amp; document.cookie){
+            const cookieVal = document.cookie.split(';')
+                .map(v =&gt; v.trim())
+                .find(v =&gt; v.trim().indexOf(prefix) === 0);
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (cookieVal){
+                return Token.FromHeadAndPayload(cookieVal.substring(prefix.length));
+            }
+        }
+        return Token.CreateEmpty();
+    }
+&nbsp;
+    private setTokenToCookie(key: string, Token: Token, persist: TokenPersist, doc: Document): void {
+        let cookie = `${key}=${Token.toString()}`;
+        if (persist === TokenPersist.Expiration) {
+            cookie += `; expires=${Token.ExpirationTime.toUTCString()};`
+        }
+        doc.cookie = cookie;
+    }
+&nbsp;
+    /**
+     * Gets the specified token
+     * @param key {TokenType} The key for the token
+     * @returns {Token} The requested token, or Token.Empty in case of error
+     */
+    public GetToken(key: TokenType): Token {
+        const storeKey = this.getStoreKey(key);
+        try {
+            switch (this.TokenStoreType) {
+                case TokenStoreType.InMemory:
+                    return Token.FromHeadAndPayload(this.innerStore[storeKey as any]);
+                case TokenStoreType.LocalStorage:
+                    return Token.FromHeadAndPayload((this.localStorageRef as any).getItem(storeKey));
+                case TokenStoreType.SessionStorage:
+                    return Token.FromHeadAndPayload((this.sessionStorageRef as any).getItem(storeKey));
+                case TokenStoreType.ExpirationCookie:
+                case TokenStoreType.SessionCookie:
+                    return this.getTokenFromCookie(storeKey, this.documentRef as Document);
+            }
+        } catch (err) {
+            // 
+        }
+        return Token.CreateEmpty();
+    }
+&nbsp;
+    /**
+     * Sets the token with the specified key to the specified value
+     * @param key {TokenType} The key for the token to set
+     * @param token {Token} The token to set with the specified key
+     */
+    public SetToken(key: TokenType, token: Token) {
+        const storeKey = this.getStoreKey(key);
+        let dtaString = token.toString();
+        switch (this.TokenStoreType) {
+            case TokenStoreType.InMemory:
+                this.innerStore[storeKey as any] = dtaString;
+                break;
+            case TokenStoreType.LocalStorage:
+                this.localStorageRef &amp;&amp; this.localStorageRef.setItem(storeKey, dtaString);
+                break;
+            case TokenStoreType.SessionStorage:
+                this.sessionStorageRef &amp;&amp; this.sessionStorageRef.setItem(storeKey, dtaString);
+                break;
+            case TokenStoreType.ExpirationCookie:
+                this.setTokenToCookie(storeKey, token, TokenPersist.Expiration, this.documentRef as Document);
+                break;
+            case TokenStoreType.SessionCookie:
+                this.setTokenToCookie(storeKey, token, TokenPersist.Session, this.documentRef as Document);
+                break;
+        }
+    }
+&nbsp;
+    /**
+     * The current Access Token
+     */
+    public get AccessToken() {
+        return this.GetToken('access');
+    }
+    public set AccessToken(value: Token) {
+        this.SetToken('access', value);
+    }
+&nbsp;
+    /**
+     * The current Refresh Token
+     */
+    public get RefreshToken() {
+        return this.GetToken('refresh');
+    }
+    public set RefreshToken(value: Token) {
+        this.SetToken('refresh', value);
+    }
+&nbsp;
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jul 19 2017 11:37:40 GMT+0200 (Central Europe Daylight Time)
+</div>
+</div>
+<script src="..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\sorter.js"></script>
+</body>
+</html>

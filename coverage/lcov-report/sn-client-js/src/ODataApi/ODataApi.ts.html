@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for sn-client-js/src/ODataApi/ODataApi.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">sn-client-js/src/ODataApi</a> ODataApi.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">87.93% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>51/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.83% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>23/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">77.78% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>14/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">87.93% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>51/58</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">182x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">182x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">182x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">182x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @module ODataApi
+ * @preferred
+ * 
+ * @description This module contains OData-related classes and functions.
+ */ /** */
+&nbsp;
+import { BaseHttpProvider } from '../HttpProviders';
+import { ODataRequestOptions, IODataParams, CustomAction, ODataResponse, ICustomActionOptions, ODataCollectionResponse } from './';
+import { ODataHelper } from '../SN';
+import { Observable } from '@reactivex/rxjs';
+import { Content } from '../Content';
+import { BaseRepository } from '../Repository/BaseRepository';
+&nbsp;
+/**
+ * This class contains methods and classes for sending requests and getting responses from the Content Repository through OData REST API.
+ *
+ * Following methods return Rxjs Observables which are made from the ajax requests' promises. Action methods like Delete or Rename on Content calls this methods,
+ * gets their responses as Observables and returns them so that you can subscribe them in your code.
+ */
+export class ODataApi&lt;THttpProvider extends BaseHttpProvider, TBaseContentType extends Content&gt;{
+&nbsp;
+    /**
+     * The HTTP provider instance for making AJAX calls.
+     */
+    private readonly httpProvider: THttpProvider;
+&nbsp;
+    /**
+     * @param {THttpProvider} providerRef Reference to a specifed HTTP Provider to make Ajax calls
+     * @param {BaseRepository} repository Reference to a Repository instance
+     */
+    constructor(
+        providerRef: { new(): THttpProvider },
+        private readonly repository: BaseRepository&lt;THttpProvider&gt;,
+    ) {
+        this.httpProvider = new providerRef();
+    }
+&nbsp;
+    /**
+     * Method to get a Content from the Content Repository through OData REST API.
+     *
+     * @param {ODataRequestOptions} options Object with the params of the ajax request.
+     * @param {new(...args): T} returns The content type that will be returned
+     * @returns {Observable} Returns an Rxjs observable that you can subscribe of in your code.
+     * 
+     * ```ts
+     * myODataApi.Get(new ODataApi.ODataRequestOptions({
+     *      path: 'Root/Sites/Default_site/todos'
+     *      }), ContentTypes.TaskList)
+     *     .subscribe(result=&gt;{
+     *          console.log('My TaskList is:', result.d)
+     *      });
+     * ```
+     */
+    public Get&lt;T extends TBaseContentType&gt;(options: ODataRequestOptions, returns?: { new(...args: any[]): T }): Observable&lt;ODataResponse&lt;T['options']&gt;&gt; {
+&nbsp;
+        return this.repository.Ajax&lt;ODataResponse&lt;T['options']&gt;&gt;(`${options.path}${ODataHelper.buildUrlParamString(options.params)}`, 'GET').share();
+    }
+&nbsp;
+    /**
+     * Method to fetch children of a Content from the Content Repository through OData REST API.
+     *
+     * This method creates an Observable, sends an ajax request to the server and convert the reponse to promise which will be the argument of the Observable.
+     * @params options {ODataRequestOptions} Object with the params of the ajax request.
+     * @returns {Observable} Returns an Rxjs observable that you can subscribe of in your code.
+     * 
+     * ```ts
+     * myODataApi.Fetch(new ODataApi.ODataRequestOptions({
+     *       path: 'Root/Sites/Default_site/todos'
+     *       }), ContentTypes.Task)
+     *   .subscribe(result=&gt;{
+     *      console.log('Tasks count:', result.d.__count);
+     *      console.log('The Tasks are:', result.d.results);
+     *   });
+     * ```
+     */
+    public Fetch&lt;T extends TBaseContentType = TBaseContentType&gt;(
+        options: ODataRequestOptions,
+        returnsType?: { new(...args: any[]): T['options'] }): Observable&lt;ODataCollectionResponse&lt;T['options']&gt;&gt; {
+&nbsp;
+        return this.repository.Ajax&lt;ODataCollectionResponse&lt;T['options']&gt;&gt;(`${options.path}${ODataHelper.buildUrlParamString(options.params)}`, 'GET').share();
+    }
+&nbsp;
+    /**
+     * Method to post a created content into the sense NET Content Repoository.
+     * @param {string} path The Path of the content
+     * @param {T} content The options (fields) for the content to be created.
+     * @param { new(opt, repository):T } postedContentType The type of the content
+     * @param {IRepository} repository The repository for the content creation
+     * @returns {Observable&lt;T&gt;} An observable whitch will be updated with the created content.
+     * 
+     * ```ts
+     *  const myTask = new ContentTypes.Task({
+     *       Name: 'My New Task',
+     *       DueDate: new Date(),
+     *  }, myRepository)
+     * 
+     *  myODataApi.Post('Root/Sites/Default_site/todos', myTask, ContentTypes.Task)
+     *  .subscribe(result=&gt;{
+     *      console.log('My New Task is:', result);
+     *  });
+     * ```
+     */
+    public Post&lt;T extends TBaseContentType&gt;(
+        path: string,
+        contentBody: T['options'],
+        postedContentType: { new(...args: any[]): T }): Observable&lt;T['options']&gt; {
+&nbsp;
+        (contentBody as any).__ContentType = contentBody.Type || postedContentType.name;
+        return this.repository
+            .Ajax(ODataHelper.getContentURLbyPath(path), 'POST', ODataResponse, JSON.stringify(contentBody))
+            .map(resp =&gt; resp.d)
+            .share();
+    }
+&nbsp;
+    /**
+     * Method to delete a Content from the Content Repository through OData REST API.
+     *
+     * @param {number} id Id of the Content that will be deleted.
+     * @param {number} permanentc Determines whether the Content should be moved to the Trash or be deleted permanently.
+     * @returns {Observable} Returns an observable that you can subscribe of in your code.
+     */
+    public Delete = (id: number, permanent?: boolean): Observable&lt;any&gt; =&gt;
+        this.repository.Ajax(`/content(${id})`, 'DELETE', Object, { 'permanent': permanent }).share();
+&nbsp;
+&nbsp;
+    /**
+     * Method to modify a single or multiple fields of a Content through OData REST API.
+     *
+     * @param {number} id Id of the Content that will be modified.
+     * @param {{new(...args): T}} contentType The type of the content
+     * @param {Partial&lt;T['options']&gt;} fields Contains the modifiable fieldnames as keys and their values.
+     * @returns {Observable} Returns an Rxjs observable that you can subscribe of in your code.
+     * 
+     * ```ts 
+     * myODataApi.Patch(3, ContentTypes.Task, {
+     *       Name: 'MyUpdatedTask'
+     *  })
+     * .subscribe(result=&gt;{
+     *      console.log('My Updated Task is:', result);
+     * });
+     * ```
+     */
+    public Patch&lt;T extends TBaseContentType&gt;(id: number, contentType: { new(...args: any[]): T }, fields: T['options']): Observable&lt;T['options']&gt; {
+&nbsp;
+        let contentTypeWithResponse = ODataResponse as { new(...args: any[]): ODataResponse&lt;T&gt; };
+        return this.repository.Ajax(`/content(${id})`, 'PATCH', contentTypeWithResponse, `models=[${JSON.stringify(fields)}]`)
+            .map(result =&gt; result.d);
+    }
+&nbsp;
+&nbsp;
+    /**
+     * Method to set multiple fields of a Content and clear the rest through OData REST API.
+     *
+     * This method creates an Observable, sends an ajax request to the server and convert the reponse to promise which will be the argument of the Observable.
+     * @param {number} id Id of the Content that will be modified.
+     * @param {{new(...args): T}} contentType The type of the content
+     * @param {T['options']} fields Contains the modifiable fieldnames as keys and their values.
+     * @returns {Observable} Returns an Rxjs observable that you can subscribe of in your code.
+     * 
+     * ```ts 
+     * myODataApi.Put(3, ContentTypes.Task, {
+     *       Name: 'MyUpdatedTask'
+     *  })
+     * .subscribe(result=&gt;{
+     *      console.log('My Updated Task is:', result);
+     * });
+     * ```
+     */
+    public Put&lt;T extends TBaseContentType&gt;(id: number, contentType: { new(...args: any[]): T }, fields: T['options']): Observable&lt;T&gt; {
+        let contentTypeWithResponse = ODataResponse as { new(...args: any[]): ODataResponse&lt;T&gt; };
+        return this.repository.Ajax(`/content(${id})`, 'PUT', contentTypeWithResponse, `models=[${JSON.stringify(fields)}]`)
+            .map(result =&gt; result.d);
+    }
+&nbsp;
+    /**
+      * Creates a wrapper function for a callable custom OData action.
+      *
+      * This method creates an Observable, sends an ajax request to the server and convert the reponse to promise which will be the argument of the Observable.
+      * @param {ICustomActionOptions} actionOptions A CustomAction configuration object.
+      * @param {IODataParams} options An object that holds the config of the ajax request like urlparameters or data.
+      * @param {new(...args): TReturnType} returns Th type that the action should return
+      * @returns {Observable&lt;TReturnType&gt;} Returns an Rxjs observable whitch will be resolved with TReturnType that you can subscribe of in your code.
+      */
+    public CreateCustomAction&lt;TReturnType&gt;(actionOptions: ICustomActionOptions, options?: IODataParams, returns?: { new(...args: any[]): TReturnType }): Observable&lt;TReturnType&gt; {
+        if (!returns) {
+            returns = Object as { new(...args: any[]): any };
+        }
+        let action = new CustomAction(actionOptions);
+        let cacheParam = (action.noCache) ? '' : '&amp;nocache=' + new Date().getTime();
+        let path = '';
+        if (typeof action.id !== 'undefined') {
+            path = ODataHelper.joinPaths(ODataHelper.getContentUrlbyId(action.id), action.name);
+        }
+        else <span class="missing-if-branch" title="else path not taken" >E</span>if (action.path) {
+            path = ODataHelper.joinPaths(ODataHelper.getContentURLbyPath(action.path), action.name);
+        } else {
+            const error = <span class="cstat-no" title="statement not covered" >new Error('No Id or Path provided.')</span>
+<span class="cstat-no" title="statement not covered" >            this.repository['onCustomActionFailedSubject'].next({</span>
+                actionOptions: actionOptions,
+                ODataParams: options,
+                ResultType: returns,
+                Error: error
+            });
+<span class="cstat-no" title="statement not covered" >            throw error;</span>
+        }
+        if (cacheParam.length &gt; 0) {
+            path = `${path}?${cacheParam}`
+        }
+&nbsp;
+        if (path.indexOf('OData.svc(') &gt; -1) {
+            const start = path.indexOf('(');
+            path = path.slice(0, start) + '/' + path.slice(start);
+        }
+&nbsp;
+        if (typeof action.isAction === 'undefined' || !action.isAction) {
+            const ajax = this.repository.Ajax(path, 'GET', returns).share();
+            ajax.subscribe(resp =&gt; {
+                this.repository['onCustomActionExecutedSubject'].next({
+                    ActionOptions: actionOptions,
+                    ODataParams: options,
+                    Result: resp
+                });
+            }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.repository['onCustomActionFailedSubject'].next({</span>
+                    actionOptions: actionOptions,
+                    ODataParams: options,
+                    ResultType: returns as any,
+                    Error: err
+                });
+            });
+            return ajax;
+        }
+        else {
+            if (typeof options !== 'undefined' &amp;&amp; typeof options.data !== 'undefined') {
+                const ajax = this.repository.Ajax(path, 'POST', returns, JSON.stringify(options.data)).share();
+                ajax.subscribe(resp =&gt; {
+                    this.repository['onCustomActionExecutedSubject'].next({
+                        ActionOptions: actionOptions,
+                        ODataParams: options,
+                        Result: resp
+                    });
+                }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this.repository['onCustomActionFailedSubject'].next({</span>
+                        actionOptions: actionOptions,
+                        ODataParams: options,
+                        ResultType: returns as any,
+                        Error: err                        
+                    });
+                });
+                return ajax;
+            }
+            else {
+                const ajax = this.repository.Ajax(path, 'POST', returns).share();
+                ajax.subscribe(<span class="fstat-no" title="function not covered" >resp</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this.repository['onCustomActionExecutedSubject'].next({</span>
+                        ActionOptions: actionOptions,
+                        ODataParams: options,
+                        Result: resp
+                    });
+                }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this.repository['onCustomActionFailedSubject'].next({</span>
+                        actionOptions: actionOptions,
+                        ODataParams: options,
+                        ResultType: returns as any,
+                        Error: err                        
+                    });
+                });
+                return ajax;
+            }
+        }
+    }
+&nbsp;
+    public Upload = (path: string, data: Object, creation: boolean): Observable&lt;Object&gt; =&gt; {
+        let url = `${ODataHelper.getContentURLbyPath(path)}/Upload`;
+        if (creation) {
+            url = `${url}?create=1`;
+        }
+        else {
+            url = url;
+        }
+        return this.repository.Ajax(url, 'POST', Object, data);
+    }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jul 19 2017 11:37:40 GMT+0200 (Central Europe Daylight Time)
+</div>
+</div>
+<script src="..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\sorter.js"></script>
+</body>
+</html>

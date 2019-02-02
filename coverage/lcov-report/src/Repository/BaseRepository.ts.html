@@ -1,0 +1,2360 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Repository/BaseRepository.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/Repository</a> BaseRepository.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">99.52% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>206/207</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92.65% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>63/68</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.81% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>83/84</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">99.49% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>196/197</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">143x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">178x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">165x</span>
+<span class="cline-any cline-yes">165x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">134x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">134x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">130x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1190x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1190x</span>
+<span class="cline-any cline-yes">1171x</span>
+<span class="cline-any cline-yes">1171x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1115x</span>
+<span class="cline-any cline-yes">1115x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1190x</span>
+<span class="cline-any cline-yes">1190x</span>
+<span class="cline-any cline-yes">1190x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">206x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">675x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">305x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">300x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3231x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4929x</span>
+<span class="cline-any cline-yes">388x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4929x</span>
+<span class="cline-any cline-yes">19400x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4929x</span>
+<span class="cline-any cline-yes">2833x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62015x</span>
+<span class="cline-any cline-yes">2096x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2089x</span>
+<span class="cline-any cline-yes">2089x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2089x</span>
+<span class="cline-any cline-yes">1698x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2089x</span>
+<span class="cline-any cline-yes">2089x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @module Repository
+ */
+/** */
+&nbsp;
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { IAuthenticationService, LoginState } from '../Authentication/';
+import { SnConfigModel } from '../Config/snconfigmodel';
+import { Content, ContentInternal, IContent, ISavedContent, SavedContent } from '../Content';
+import { ContentSerializer } from '../ContentSerializer';
+import { ContentType, Folder, GenericContent, PortalRoot, User } from '../ContentTypes';
+import { BaseHttpProvider } from '../HttpProviders';
+import { IODataParams, ODataApi, ODataBatchResponse, ODataCollectionResponse } from '../ODataApi';
+import { FinializedQuery, QueryExpression, QuerySegment } from '../Query';
+import { Schema, SchemaStore } from '../Schemas';
+import { Authentication, ContentTypes, ODataHelper } from '../SN';
+import { RepositoryEventHub, UploadFileOptions, UploadFromEventOptions, UploadOptions, UploadProgressInfo, UploadResponse, UploadTextOptions, VersionInfo, WithParentContent } from './';
+&nbsp;
+/**
+ *
+ */
+export class BaseRepository&lt;TProviderType extends BaseHttpProvider = BaseHttpProvider,
+    TAuthenticationServiceType extends IAuthenticationService = IAuthenticationService&gt; {
+    private _odataApi: ODataApi&lt;TProviderType&gt;;
+    public readonly Events: RepositoryEventHub = new RepositoryEventHub();
+&nbsp;
+    /**
+     * Returns the Repository's base OData Url (e.g.: https://demo.sensenet.com/odata.svc)
+     */
+    // tslint:disable-next-line:naming-convention
+    public get ODataBaseUrl() {
+        return ODataHelper.joinPaths(this.Config.RepositoryUrl, this.Config.ODataToken);
+    }
+&nbsp;
+    public WaitForAuthStateReady() {
+        return this.Authentication.State.skipWhile((state) =&gt; state === Authentication.LoginState.Pending)
+            .first();
+    }
+&nbsp;
+    /**
+     * Public endpoint for making Ajax calls to the Repository
+     * @param {string} path The Path for the call
+     * @param {'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE'} method The method type
+     * @param {{ new (...args): T }} returnsType The expected return type
+     * @param {any} body The post body (optional)
+     * @returns {Observable&lt;T&gt;} An observable, which will be updated with the response.
+     */
+    public Ajax&lt;T&gt;(path: string,
+                   method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE',
+                   returnsType?: { new(...args: any[]): T },
+                   body?: any,
+                   additionalHeaders?: { name: string, value: string }[]
+    ): Observable&lt;T&gt; {
+        this.Authentication.CheckForUpdate();
+        return this.WaitForAuthStateReady()
+            .flatMap((state) =&gt; {
+                if (!returnsType) {
+                    returnsType = Object as { new(...args: any[]): any };
+                }
+                return this.HttpProviderRef.Ajax&lt;T&gt;(returnsType,
+                    {
+                        url: ODataHelper.joinPaths(this.ODataBaseUrl, path),
+                        method,
+                        body,
+                        responseType: 'json',
+                    }, additionalHeaders);
+            });
+    }
+&nbsp;
+    public UploadFile&lt;TFile extends IContent&gt;(uploadOptions: WithParentContent&lt;UploadFileOptions&lt;TFile&gt;&gt;): Observable&lt;UploadProgressInfo&lt;TFile&gt;&gt; {
+        this.Authentication.CheckForUpdate();
+        uploadOptions.Body = {
+            ...uploadOptions.Body,
+            Overwrite: uploadOptions.Overwrite,
+            PropertyName: uploadOptions.PropertyName,
+            FileName: uploadOptions.File.name,
+            ContentType: uploadOptions.ContentType.name,
+        };
+        this.Authentication.CheckForUpdate();
+        return this.WaitForAuthStateReady()
+            .flatMap((state) =&gt; {
+                const uploadSubject = new Subject&lt;UploadProgressInfo&lt;TFile&gt;&gt;();
+                const fileName = uploadOptions.File.name;
+                const uploadPath = ODataHelper.joinPaths(this.ODataBaseUrl, uploadOptions.Parent.GetFullPath(), 'upload');
+&nbsp;
+                if (uploadOptions.File.size &lt;= this.Config.ChunkSize) {
+&nbsp;
+                    /** Non-chunked upload */
+                    uploadOptions.Body.ChunkToken = '0*0*False*False';
+                    this.HttpProviderRef.Upload&lt;TFile&gt;((uploadOptions.ContentType) as { new(...args: any[]): Content&lt;TFile&gt; }, uploadOptions.File, {
+                        url: uploadPath,
+                        body: uploadOptions.Body,
+                    })
+                        .subscribe((created) =&gt; {
+                            this.Load&lt;TFile&gt;((created as SavedContent&lt;TFile&gt;).Id, uploadOptions.OdataOptions).subscribe((c) =&gt; {
+                                this.Events.Trigger.ContentCreated({
+                                    Content: c
+                                });
+&nbsp;
+                                const progress = {
+                                    Completed: true,
+                                    ChunkCount: 1,
+                                    UploadedChunks: 1,
+                                    CreatedContent: c
+                                };
+&nbsp;
+                                uploadSubject.next(progress);
+                                this.Events.Trigger.UploadProgress(progress);
+                                uploadSubject.complete();
+                            });
+                        }, (error) =&gt; {
+                            this.Events.Trigger.ContentCreateFailed({
+                                Content: {
+                                    Id: null,
+                                    Path: null,
+                                    Name: fileName
+                                } as Content,
+                                Error: error
+                            });
+                            uploadSubject.error(error);
+                        });
+                } else {
+&nbsp;
+                    /* Chunked upload  */
+&nbsp;
+                    /**
+                     * Init request
+                     */
+&nbsp;
+                    const initialChunkData = uploadOptions.File.slice(0, this.Config.ChunkSize);
+                    return this.HttpProviderRef.Upload(String, new File([initialChunkData], uploadOptions.File.name), {
+                        url: uploadPath,
+                        body: {
+                            ...uploadOptions.Body,
+                            UseChunk: true,
+                            create: 1
+                        },
+                        headers: {
+                            'Content-Range': `bytes ${0}-${this.Config.ChunkSize}/${uploadOptions.File.size}`,
+                            'Content-Disposition': `attachment; filename="${uploadOptions.File.name}"`
+                        }
+                    }
+                    ).
+                        flatMap((chunkToken) =&gt; {
+                            const resp = new UploadResponse(...chunkToken.split('*'));
+                            const createdContent: SavedContent&lt;TFile&gt; = this.HandleLoadedContent&lt;TFile&gt;({
+                                Id: resp.ContentId,
+                                Path: uploadOptions.Parent.Path,
+                                Name: uploadOptions.File.name,
+                                Type: uploadOptions.ContentType.name
+                            } as TFile &amp; ISavedContent);
+&nbsp;
+                            this.Events.Trigger.ContentCreated({
+                                Content: createdContent
+                            });
+&nbsp;
+                            return this.sendChunk(uploadOptions, uploadPath, chunkToken.toString(), resp.ContentId)
+                                .flatMap((c) =&gt; {
+                                    return this.Load&lt;TFile&gt;(resp.ContentId, uploadOptions.OdataOptions)
+                                    .map((content) =&gt; {
+                                        const chunkCount = Math.ceil(uploadOptions.File.size / this.Config.ChunkSize);
+                                        // tslint:disable-next-line:no-string-literal
+                                        content['_isOperationInProgress'] = false;
+                                        const progressInfo = {
+                                            Completed: true,
+                                            ChunkCount: chunkCount,
+                                            UploadedChunks: chunkCount,
+                                            CreatedContent: content
+                                        } as UploadProgressInfo&lt;TFile&gt;;
+                                        this.Events.Trigger.UploadProgress(progressInfo);
+                                        return progressInfo;
+                                    });
+                        });
+                    });
+                }
+&nbsp;
+                return uploadSubject.asObservable();
+            });
+    }
+&nbsp;
+    private sendChunk&lt;T extends IContent&gt;(options: WithParentContent&lt;UploadFileOptions&lt;T&gt;&gt;, uploadPath: string, chunkToken: string, contentId: number, offset: number = 0)
+        : Observable&lt;UploadProgressInfo&lt;T&gt;&gt; {
+        this.Authentication.CheckForUpdate();
+        return this.WaitForAuthStateReady()
+            .flatMap((state) =&gt; {
+&nbsp;
+                let chunkEnd = offset + this.Config.ChunkSize;
+                chunkEnd = chunkEnd &gt; options.File.size ? <span class="branch-0 cbranch-no" title="branch not covered" >options.File.size </span>: chunkEnd;
+&nbsp;
+                const chunkData = options.File.slice(offset, chunkEnd);
+&nbsp;
+                const request = this.HttpProviderRef.Upload(Object, new File([chunkData], options.File.name), {
+                    url: uploadPath,
+                    body: {
+                        ...options.Body,
+                        UseChunk: true,
+                        FileLength: options.File.size,
+                        ChunkToken: chunkToken
+                    },
+                    headers: {
+                        'Content-Range': `bytes ${offset}-${chunkEnd - 1}/${options.File.size}`,
+                        'Content-Disposition': `attachment; filename="${options.File.name}"`
+                    }
+                }).map((newResp) =&gt; {
+                    const content = this.HandleLoadedContent&lt;T&gt;({
+                        Id: contentId,
+                        Path: 'asd',
+                        Name: options.File.name,
+                        Type: options.ContentType.name
+                    } as T &amp; ISavedContent);
+                    // tslint:disable-next-line:no-string-literal
+                    content['_isOperationInProgress'] = true;
+                    const progress = {
+                        Completed: false,
+                        ChunkCount: Math.ceil(options.File.size / this.Config.ChunkSize),
+                        CreatedContent: content,
+                        UploadedChunks: (offset / this.Config.ChunkSize) + 1
+                    };
+                    this.Events.Trigger.UploadProgress(progress);
+                    return progress;
+                });
+&nbsp;
+                if (chunkEnd === options.File.size) {
+                    return request;
+                }
+                return request.flatMap((r) =&gt; this.sendChunk(options, uploadPath, chunkToken, contentId, offset + this.Config.ChunkSize));
+            });
+    }
+&nbsp;
+    public UploadTextAsFile&lt;T extends IContent = IContent&gt;(options: WithParentContent&lt;UploadTextOptions&lt;T&gt;&gt;) {
+        const file = new File([options.Text], options.FileName);
+        return this.UploadFile&lt;T&gt;({
+            File: file,
+            ...options as WithParentContent&lt;UploadOptions&lt;T&gt;&gt;
+        });
+    }
+&nbsp;
+    private async webkitFileHandler&lt;T extends IContent&gt;(FileEntry: WebKitFileEntry, Scope: ContentInternal, options: UploadOptions&lt;T&gt;) {
+        await new Promise((resolve, reject) =&gt; {
+            FileEntry.file((f) =&gt; {
+                Scope.UploadFile({
+                    File: f as any as File,
+                    ...options
+                })
+                    .skipWhile((progress) =&gt; !progress.Completed)
+                    .subscribe(
+                    (progress) =&gt; resolve(progress),
+<span class="fstat-no" title="function not covered" >                    (e</span>rr) =&gt; <span class="cstat-no" title="statement not covered" >reject(err))</span>;
+            }, (err) =&gt; reject(err));
+        });
+    }
+&nbsp;
+    private async webkitDirectoryHandler&lt;T extends IContent&gt;(Directory: WebKitDirectoryEntry, Scope: Content, options: UploadOptions&lt;T&gt;) {
+        await new Promise((resolve, reject) =&gt; {
+            this.CreateContent&lt;Folder&gt;({
+                Name: Directory.name,
+                Path: Scope.Path,
+                DisplayName: Directory.name
+            }, Folder).Save().subscribe(async (c) =&gt; {
+                const dirReader = Directory.createReader();
+                await new Promise((res) =&gt; {
+                    dirReader.readEntries(async (items) =&gt; {
+                        await this.webkitItemListHandler&lt;T&gt;(items as any, c, true, options);
+                        res();
+                    });
+                });
+                resolve(c);
+            }, (err) =&gt; reject(err));
+        });
+    }
+&nbsp;
+    private async webkitItemListHandler&lt;T extends IContent&gt;(items: (WebKitFileEntry | WebKitDirectoryEntry)[], Scope: Content, CreateFolders: boolean, options: UploadOptions&lt;T&gt;) {
+        // tslint:disable-next-line:forin
+        for (const index in items) {
+            if (CreateFolders &amp;&amp; items[index].isDirectory) {
+                await this.webkitDirectoryHandler(items[index] as WebKitDirectoryEntry, Scope, options);
+            }
+            if (items[index].isFile) {
+                await this.webkitFileHandler(items[index] as WebKitFileEntry, Scope, options);
+            }
+        }
+    }
+&nbsp;
+    public async UploadFromDropEvent&lt;T extends IContent = IContent&gt;(options: UploadFromEventOptions&lt;T&gt; &amp; { Parent: ContentInternal }) {
+        if ((window as any).webkitRequestFileSystem) {
+            const entries: (WebKitFileEntry | WebKitDirectoryEntry)[] =
+                [].map.call(options.Event.dataTransfer.items, (i: DataTransferItem) =&gt; i.webkitGetAsEntry());
+&nbsp;
+            await this.webkitItemListHandler&lt;T&gt;(entries, options.Parent, options.CreateFolders, options);
+        } else {
+            // Fallback for non-webkit browsers.
+            [].forEach.call(options.Event.dataTransfer.files, async (f: File) =&gt; {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (f.type === 'file') {
+                    options.Parent.UploadFile({
+                        File: f,
+                        ...options as UploadOptions&lt;T&gt;
+                    }).subscribe((c) =&gt; { /**/ });
+                }
+&nbsp;
+            });
+        }
+&nbsp;
+    }
+&nbsp;
+    /**
+     * Reference to the Http Provider used by the current repository
+     */
+    public readonly HttpProviderRef: TProviderType;
+&nbsp;
+    /**
+     * Reference to the OData API used by the current repository
+     */
+    public get Content(): ODataApi&lt;TProviderType&gt; {
+        // tslint:disable-next-line:no-console
+        console.warn('The property repository.Content is deprecated and will be removed in the near future. Use repositoy.GetODataApi() instead.');
+        return this._odataApi;
+    }
+&nbsp;
+    // tslint:disable-next-line:naming-convention
+    public GetODataApi(): ODataApi&lt;TProviderType&gt; {
+        return this._odataApi;
+    }
+&nbsp;
+    /**
+     * Reference to the Authentication Service used by the current repository
+     */
+    public Authentication: TAuthenticationServiceType;
+&nbsp;
+    /**
+     * Reference to the configuration used by the current repository
+     */
+    public readonly Config: SnConfigModel;
+&nbsp;
+    /**
+     * @param config The Repository's configuration entry
+     * @param httpProviderType The type of the Http Provider, should extend HttpProviders.BaseHttpProvider
+     * @param authentication The type of the Authentication Service to be used.
+     */
+    constructor(config: Partial&lt;SnConfigModel&gt;,
+                _httpProviderType: { new(): TProviderType },
+                authentication: { new(...args: any[]): TAuthenticationServiceType }) {
+&nbsp;
+        this.HttpProviderRef = new _httpProviderType();
+        this.Config = new SnConfigModel(config);
+&nbsp;
+        // warning: Authentication constructor parameterization is not type-safe
+        this.Authentication = new authentication(this);
+        this._odataApi = new ODataApi(this);
+&nbsp;
+        this.initUserUpdate();
+    }
+&nbsp;
+    /**
+     * Gets the complete version information about the core product and the installed applications. This function is accessible only for administrators by default. You can learn more about the
+     * subject in the SnAdmin article. You can read detailed description of the function result.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let getVersionInfo = GetVersionInfo();
+     * getVersionInfo.subscribe({
+     *  next: response =&gt; {
+     *      console.log('success');
+     *  },
+     *  error: error =&gt; console.error('something wrong occurred: ' + error.responseJSON.error.message.value),
+     *  complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public GetVersionInfo() {
+        return this._odataApi.CreateCustomAction({ name: 'GetVersionInfo', path: '/Root', isAction: false }, {}, VersionInfo);
+    }
+    /**
+     * Returns the list of all ContentTypes in the system.
+     * @returns {Observable&lt;ODataCollectionResponse&lt;ContentTypes.ContentType&gt;&gt;} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let getAllContentTypes = GetAllContentTypes();
+     * getAllContentTypes.subscribe({
+     *  next: response =&gt; {
+     *      console.log('success');
+     *  },
+     *  error: error =&gt; console.error('something wrong occurred: ' + error.responseJSON.error.message.value),
+     *  complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public GetAllContentTypes(): Observable&lt;ContentType[]&gt; {
+        return this._odataApi.CreateCustomAction&lt;ODataCollectionResponse&lt;ContentType&gt;&gt;({
+            name: 'GetAllContentTypes',
+            path: '/Root',
+            isAction: false
+        },
+            undefined,
+            ODataCollectionResponse)
+            .map((resp) =&gt; {
+                return resp.d.results.map((c) =&gt; this.HandleLoadedContent&lt;ContentType&gt;(c));
+            });
+    }
+&nbsp;
+    private _loadedContentReferenceCache: Map&lt;number, SavedContent&gt; = new Map();
+&nbsp;
+    /**
+     * Creates a Content instance that is loaded from the Repository. This method should be used only to instantiate content from payload received from the backend.
+     * @param {T &amp; ISavedContent} contentData An object with the Content data
+     * @param {new(...args):T} contentType The Content type.
+     * @returns {SavedContent&lt;T&gt;}
+     * ```ts
+     * var content = SenseNet.Content.HandleLoadedContent({ Id: 123456, Path: 'Root/Example', DisplayName: 'My folder' }, ContentTypes.Folder); // content is an instance of the Folder with the DisplayName 'My folder'
+     * ```
+     */
+    public HandleLoadedContent&lt;T extends IContent&gt;(contentData: T &amp; ISavedContent, contentType?: { new(...args: any[]): T }): SavedContent&lt;T&gt; {
+        let instance: Content&lt;T&gt;;
+&nbsp;
+        const realContentType = (contentType || (contentData.Type &amp;&amp; (ContentTypes as any)[contentData.Type]) || Folder) as { new(...args: any[]): T };
+&nbsp;
+        if (contentData.Id) {
+            const cached = this._loadedContentReferenceCache.get(contentData.Id);
+            if (cached) {
+                instance = cached as Content&lt;T&gt;;
+                // tslint:disable-next-line:no-string-literal
+                instance['updateLastSavedFields'](contentData);
+            } else {
+                instance = ContentInternal.Create&lt;T&gt;(contentData, realContentType, this);
+                this._loadedContentReferenceCache.set(contentData.Id, instance as SavedContent&lt;T&gt;);
+            }
+&nbsp;
+        } else {
+            instance = ContentInternal.Create&lt;T&gt;(contentData, realContentType, this);
+        }
+        // tslint:disable-next-line:no-string-literal
+        instance['_isSaved'] = true;
+        this.Events.Trigger.ContentLoaded({ Content: instance as SavedContent });
+        return instance as SavedContent&lt;T&gt;;
+    }
+&nbsp;
+    /**
+     * Requests a Content by the given id.
+     * @param idOrPath {number|string} Id of the requested Content.
+     * @param version {string} A string containing the version of the requested Content.
+     * @param options {Object} JSON object with the possible ODATA parameters like select, expand, etc.
+     * @returns {Observable&lt;T&gt;} Returns an RxJS observable that you can subscribe of in your code.
+     * ```ts
+     * var content = SenseNet.Content.Load(1234, { expand: 'Avatar' }, 'A.1', ContentTypes.User);
+     * content
+     *     .map(response =&gt; response.d)
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something with the response
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error.responseJSON.error.message.value),
+     *        complete: () =&gt; console.log('done'),
+     * })
+     * ```
+     */
+    public Load&lt;TContentType extends IContent = IContent&gt;(
+        idOrPath: string | number,
+        odataOptions?: IODataParams&lt;TContentType&gt;,
+        version?: string): Observable&lt;SavedContent&lt;TContentType&gt;&gt; {
+&nbsp;
+        const contentURL = typeof idOrPath === 'string' ?
+            ODataHelper.getContentURLbyPath(idOrPath) :
+            ODataHelper.getContentUrlbyId(idOrPath);
+&nbsp;
+        const odataRequestOptions = {
+            path: contentURL,
+            params: odataOptions
+        };
+        return this._odataApi.Get(odataRequestOptions)
+            .share()
+            .map((r) =&gt; {
+                return this.HandleLoadedContent&lt;TContentType&gt;(r.d);
+            });
+    }
+&nbsp;
+    /**
+     * Shortcut to Content.Create. Creates a new, unsaved Content instance
+     * @param {TContentType} options An object with the initial content data
+     * @param {{ new(...args: any[]): TContentType }) =&gt; Content&lt;TContentType&gt;} contentType The type of the Content instance
+     * @returns {Content&lt;TContentType&gt;} the created, unsaved content instance
+     */
+    public CreateContent: &lt;TContentType extends IContent = IContent&gt;(options: TContentType, contentType: { new(...args: any[]): TContentType }) =&gt; Content&lt;TContentType&gt; =
+&lt;TContentType&gt;(options: TContentType, contentType: { new(...args: any[]): TContentType }) =&gt;
+        ContentInternal.Create&lt;TContentType&gt;(options, contentType, this)
+&nbsp;
+    /**
+     * Parses a Content instance from a stringified SerializedContent&lt;T&gt; instance
+     * @param stringifiedContent The stringified SerializedContent&lt;T&gt;
+     * @throws Error if the Content belongs to another Repository (based it's Origin)
+     * @returns The loaded Content
+     */
+    public ParseContent&lt;T extends Content = Content&gt;(stringifiedContent: string): T {
+        const serializedContent = ContentSerializer.Parse&lt;T&gt;(stringifiedContent);
+        if (serializedContent.Origin.indexOf(this.ODataBaseUrl) !== 0) {
+            throw new Error('Content belongs to a different Repository.');
+        }
+        return this.HandleLoadedContent(serializedContent.Data);
+    }
+&nbsp;
+    private readonly _staticContent = {
+        VisitorUser: this.HandleLoadedContent&lt;User&gt;({
+            Id: 6,
+            DisplayName: 'Visitor',
+            Domain: 'BuiltIn',
+            Name: 'Visitor',
+            Path: '/Root/IMS/BuiltIn/Portal/Visitor',
+            LoginName: 'Visitor',
+            Type: 'User'
+        }),
+        PortalRoot: this.HandleLoadedContent&lt;PortalRoot&gt;({
+            Id: 2,
+            Path: '/Root',
+            Name: 'Root',
+            DisplayName: 'Root',
+            Type: 'PortalRoot'
+        })
+    };
+&nbsp;
+    /**
+     * Creates a Content Query on a Repositoy instance, at Root level (path e.g.: '/OData.svc/Root' )
+     * Usage:
+     * ```ts
+     * const query = repository.CreateQuery(q =&gt; q.TypeIs(ContentTypes.Folder)
+     *                        .Top(10))
+     *
+     * query.Exec().subscribe(res =&gt; {
+     *      console.log('Folders count: ', res.Count);
+     *      console.log('Folders: ', res.Result);
+     * }
+     * ```
+     * @returns {Observable&lt;QueryResult&lt;T&gt;&gt;} An observable with the Query result.
+     */
+    public CreateQuery =
+        &lt;T extends IContent&gt;(build: (first: QueryExpression&lt;T&gt;) =&gt; QuerySegment&lt;T&gt;, params?: IODataParams&lt;T&gt;) =&gt; new FinializedQuery&lt;T&gt;(build, this, 'Root', params)
+&nbsp;
+    /**
+     * Executes a DeleteBatch request to delete multiple content by a single request.
+     *
+     * Usage:
+     * ```ts
+     * repository.DeleteBatch([content1, content2...], true).subscribe(()=&gt;{
+     *  console.log('Contents deleted.')
+     * })
+     * ```
+     *
+     * @param {(SavedContent | number | string)[]} contentList An array of content to be deleted. Can be a content (with id and/or path), a Path or an Id
+     * @param {boolean} permanently Option to delete the content permanently or just move it to the trash
+     * @param {Content} rootContent The context node, the PortalRoot by default
+     */
+    public DeleteBatch(contentList: (SavedContent | number | string)[], permanent: boolean = false, rootContent = this._staticContent.PortalRoot) {
+        const action = this._odataApi.CreateCustomAction&lt;ODataBatchResponse&gt;({
+            name: 'DeleteBatch',
+            path: rootContent.Path,
+            isAction: true,
+            requiredParams: ['paths']
+        }, {
+                data: {
+                    paths: contentList.map((c) =&gt; c.Id || c.Path || <span class="branch-2 cbranch-no" title="branch not covered" >c)</span>,
+                    permanent
+                }
+&nbsp;
+            });
+&nbsp;
+        action.subscribe((result) =&gt; {
+            if (result.d.__count) {
+                result.d.results.forEach((deleted) =&gt; {
+                    this.Events.Trigger.ContentDeleted({ ContentData: deleted, Permanently: permanent });
+                });
+&nbsp;
+                result.d.errors.forEach((error) =&gt; {
+                    this.Events.Trigger.ContentDeleteFailed({ Content: this.HandleLoadedContent(error.content), Error: error.error, Permanently: permanent });
+                });
+            }
+        }, (error) =&gt; {
+            // Whole batch operation failed
+        });
+        return action;
+    }
+&nbsp;
+    /**
+     * Executes a MoveBatch request to move multiple content by a single request.
+     *
+     * Usage:
+     * ```ts
+     * repository.MoveBatch([content1, content2...], 'Root/NewFolder').subscribe(()=&gt;{
+     *  console.log('Contents moved.')
+     * })
+     * @param {(SavedContent | number | string)[]} contentList An array of content to move. Can be a content (with path) or a Path
+     * @param {string} targetPath The target Path
+     * @param {Content} rootContent The context node, the PortalRoot by default
+     */
+    public MoveBatch(contentList: (SavedContent  | string)[], targetPath: string, rootContent: Content = this._staticContent.PortalRoot) {
+        const action = this._odataApi.CreateCustomAction&lt;ODataBatchResponse&lt;ISavedContent&gt;&gt;({
+            name: 'MoveBatch',
+            path: rootContent.Path,
+            isAction: true,
+            requiredParams: ['targetPath', 'paths']
+        }, {
+                data: [
+                    {
+                        paths: contentList.map((c) =&gt; c.Path || <span class="branch-1 cbranch-no" title="branch not covered" >c)</span>,
+                        targetPath
+                    },
+&nbsp;
+                ]
+            });
+        action.subscribe((result) =&gt; {
+            if (result.d.__count) {
+                result.d.results.forEach((moved) =&gt; {
+                    this.Events.Trigger.ContentMoved({
+                        From: (contentList.find((a) =&gt; a.Id === moved.Id) as SavedContent).Path,
+                        Content: this.HandleLoadedContent(moved),
+                        To: targetPath
+                    });
+                });
+&nbsp;
+                result.d.errors.forEach((error) =&gt; {
+                    this.Events.Trigger.ContentMoveFailed({
+                        From: (contentList.find((a) =&gt; a.Id === error.content.Id) as SavedContent).Path,
+                        Content: this.HandleLoadedContent(error.content),
+                        To: targetPath,
+                        Error: error.error
+                    });
+                });
+            }
+        }, (error) =&gt; {
+            // Whole batch operation failed
+        });
+        return action;
+    }
+&nbsp;
+    /**
+     * Executes a CopyBatch request to copy multiple content by a single request.
+     *
+     * Usage:
+     * ```ts
+     * repository.CopyBatch([content1, content2...], 'Root/NewFolder').subscribe(()=&gt;{
+     *  console.log('Contents copied.')
+     * })
+     * @param {(SavedContent | number | string)[]} contentList An array of content to copy. Can be a content (with path) or a Path
+     * @param {string} targetPath The target Path
+     * @param {Content} rootContent The context node, the PortalRoot by default
+     */
+    public CopyBatch(contentList: (SavedContent | string)[], targetPath: string, rootContent: Content = this._staticContent.PortalRoot) {
+        const action = this._odataApi.CreateCustomAction&lt;ODataBatchResponse&gt;({
+            name: 'CopyBatch',
+            path: rootContent.Path,
+            isAction: true,
+            requiredParams: ['targetPath', 'paths']
+        }, {
+                data: [
+                    {
+                        paths: contentList.map((c) =&gt; c.Path || <span class="branch-1 cbranch-no" title="branch not covered" >c)</span>,
+                        targetPath
+                    },
+&nbsp;
+                ]
+            });
+&nbsp;
+        action.subscribe((result) =&gt; {
+            if (result.d.__count) {
+                result.d.results.forEach((created) =&gt; {
+                    this.Events.Trigger.ContentCreated({ Content: this.HandleLoadedContent(created) });
+                });
+&nbsp;
+                result.d.errors.forEach((error) =&gt; {
+                    this.Events.Trigger.ContentCreateFailed({ Content: error.content, Error: error.error });
+                });
+            }
+        }, (error) =&gt; {
+            // Whole batch operation failed
+        });
+        return action;
+    }
+&nbsp;
+    private readonly _currentUserSubject = new BehaviorSubject&lt;SavedContent&lt;User&gt;&gt;(this._staticContent.VisitorUser);
+    public GetCurrentUser: () =&gt; Observable&lt;SavedContent&lt;User&gt;&gt; = () =&gt; {
+        return this._currentUserSubject
+            .distinctUntilChanged()
+            .filter((u) =&gt; {
+                const [userDomain, userName] = this.Authentication.CurrentUser.split('\\');
+                return u.LoginName === userName &amp;&amp; u.Domain === userDomain;
+            });
+    }
+&nbsp;
+    private _lastKnownUserName = 'BuiltIn\\Visitor';
+    private initUserUpdate() {
+        this.Authentication.State.skipWhile((state) =&gt; state === Authentication.LoginState.Pending)
+            .subscribe((state) =&gt; {
+                if (state === LoginState.Unauthenticated) {
+                    this._currentUserSubject.next(this._staticContent.VisitorUser);
+                    this._lastKnownUserName = 'BuiltIn\\Visitor';
+                } else {
+                    if (this._lastKnownUserName !== this.Authentication.CurrentUser) {
+                        const [userDomain, userName] = this.Authentication.CurrentUser.split('\\');
+                        this.CreateQuery((q) =&gt; q.TypeIs&lt;User&gt;(User)
+                            .And
+                            .Equals('Domain', userDomain)
+                            .And
+                            .Equals('LoginName', userName)
+                            .Top(1),
+                            {
+                                select: 'all'
+                            }
+                        ).Exec()
+                            .subscribe((usr) =&gt; {
+                                if (usr.Count === 1) {
+                                    this._currentUserSubject.next(usr.Result[0]);
+                                    this._lastKnownUserName = this.Authentication.CurrentUser;
+                                } else {
+                                    this._currentUserSubject.error(`Error getting current user: found ${usr.Count} user(s) with login name '${userName}' in domain '${userDomain}'`);
+                                }
+                            });
+                    }
+&nbsp;
+                }
+            });
+    }
+&nbsp;
+    private _schemaCache: Map&lt;string, Schema&gt;;
+    private _schemaStore: Schema[];
+&nbsp;
+    public SetSchemas(newSchemas: Schema[]) {
+        this._schemaStore = newSchemas;
+        this._schemaCache = new Map&lt;string, Schema&gt;();
+    }
+&nbsp;
+    /**
+     * Returns the Content Type Schema of the given Content Type;
+     * @param type {string} The name of the Content Type;
+     * @returns {Schemas.Schema}
+     * ```ts
+     * var genericContentSchema = SenseNet.Content.getSchema(Content);
+     * ```
+     */
+    public GetSchema&lt;TType extends IContent&gt;(currentType: { new(...args: any[]): TType }): Schema {
+        return this.GetSchemaByName(currentType.name);
+    }
+&nbsp;
+    public GetSchemaByName(schemaName: string) {
+        if (!this._schemaCache) {
+            this._schemaCache = new Map&lt;string, Schema&gt;();
+        }
+&nbsp;
+        if (!this._schemaStore) {
+            this._schemaStore = SchemaStore.map((s) =&gt; s);
+        }
+&nbsp;
+        if (this._schemaCache.has(schemaName)) {
+            return Object.assign({}, this._schemaCache.get(schemaName)) as Schema;
+        }
+        let schema = this._schemaStore.find((s) =&gt; s.ContentTypeName === schemaName) as Schema;
+        if (!schema) {
+            return this.GetSchema(GenericContent);
+        }
+        schema = Object.assign({}, schema);
+        const parentSchema = schema.ParentTypeName &amp;&amp; this.GetSchemaByName(schema.ParentTypeName);
+&nbsp;
+        if (parentSchema) {
+            schema.FieldSettings = [...schema.FieldSettings, ...parentSchema.FieldSettings];
+        }
+        this._schemaCache.set(schemaName, schema);
+        return schema;
+    }
+&nbsp;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 15 2017 10:33:34 GMT+0100 (Central Europe Standard Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

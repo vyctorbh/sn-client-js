@@ -1,0 +1,48 @@
+/// <reference types="mocha" />
+export declare class RepositoryTests {
+    private _repo;
+    before(): void;
+    'ODataBaseUrl should return a valid URL based on RepositoryUrl and ODataToken'(): void;
+    'GetVersionInfo should return a valid Version Info'(): void;
+    'GetAllContentTypes should be return a valid content type collection'(done: MochaDone): void;
+    'Load should return a valid Content'(done: MochaDone): void;
+    'Load should return a valid Content with a valid type, if defined'(done: MochaDone): void;
+    'SnRepository should have a default Config, if not provided'(): void;
+    'SnRepository should respect the provided config'(): void;
+    'HandleLoadedContent should respect content type (with fields) from generic'(): void;
+    'Content should return an ODataApi instance'(): void;
+    'Should be able to create content using repository.CreateContent() '(): void;
+    'DeleteBatch() should fire a DeleteBatch request'(done: MochaDone): void;
+    'DeleteBatch() should fire a DeleteBatch request by path'(done: MochaDone): void;
+    'DeleteBatch() should trigger ContentDeleted event after success'(done: MochaDone): void;
+    'DeleteBatch() should trigger ContentDeleteFailed event on errored operations'(done: MochaDone): void;
+    'DeleteBatch() should return error on fail'(done: MochaDone): void;
+    'MoveBatch() should fire a MoveBatch request'(done: MochaDone): void;
+    'MoveBatch() should trigger ContentMoved event after success'(done: MochaDone): void;
+    'MoveBatch() should trigger ContentMoveFailed event after failure'(done: MochaDone): void;
+    'MoveBatch() should trigger fail on request error'(done: MochaDone): void;
+    'CopyBatch() should fire a CopyBatch request'(done: MochaDone): void;
+    'CopyBatch() should trigger ContentCreated event after success'(done: MochaDone): void;
+    'CopyBatch() should trigger ContentCreateFailed event after failure'(done: MochaDone): void;
+    'CopyBatch() should fail on request error'(done: MochaDone): void;
+    'UploadResponse can be constructed'(): void;
+    'Upload() should trigger UploadProgress event'(done: MochaDone): void;
+    'Upload() should trigger ContentCreated event'(done: MochaDone): void;
+    'Upload() failure should trigger ContentCreateFailed event'(done: MochaDone): void;
+    'Upload() chunked content should trigger multiple UploadProgress requests and resolves from Upload observable'(done: MochaDone): void;
+    'Upload() chunked content should trigger multiple UploadProgress requests and resolves from UploadProgress observable'(done: MochaDone): void;
+    'UploadTextAsFile should trigger an Upload request'(done: MochaDone): void;
+    'UploadFromDropEvent should trigger an Upload request w/o webkitRequestFileSystem'(done: MochaDone): void;
+    'UploadFromDropEvent should trigger an Upload request with webkitRequestFileSystem'(done: MochaDone): void;
+    'UploadFromDropEvent should upload a file and distribute proper status info'(done: MochaDone): void;
+    'UploadFromDropEvent should distribute an error on upload failure'(done: MochaDone): void;
+    'UploadFromDropEvent should distribute an error on file read failure'(done: MochaDone): void;
+    'UploadFromDropEvent should create Directories'(done: MochaDone): void;
+    'UploadFromDropEvent should fail on error when creating a folder'(done: MochaDone): void;
+    'GetCurrentUser() should return an Observable '(): void;
+    'GetCurrentUser() should update with Visitor by default '(done: MochaDone): void;
+    'GetCurrentUser() should update with the new User on change '(done: MochaDone): void;
+    'GetCurrentUser() should not update if multiple users found  on change '(done: MochaDone): void;
+    'SchemaStore should be the generated SchemaStore by default'(): void;
+    'Schould be able to update Schemas with SetSchemas()'(): void;
+}

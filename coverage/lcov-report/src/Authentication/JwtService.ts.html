@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Authentication/JwtService.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/Authentication</a> JwtService.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>65/65</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>20/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>18/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>64/64</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">92x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">87x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @module Authentication
+ */ /** */
+&nbsp;
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { BaseRepository } from '../Repository/BaseRepository';
+import { ODataHelper } from '../SN';
+import { IAuthenticationService, IOauthProvider, LoginResponse, LoginState, RefreshResponse,
+        Token, TokenPersist, TokenStore } from './';
+&nbsp;
+/**
+ * This service class manages the JWT authentication, the session and the current login state.
+ */
+export class JwtService implements IAuthenticationService {
+&nbsp;
+    private readonly _visitorName: string = 'BuiltIn\\Visitor';
+&nbsp;
+    private _oauthProviders: Map&lt;{new(...args: any[]): IOauthProvider}, IOauthProvider&gt; = new Map();
+&nbsp;
+    /**
+     * Sets a specified OAuth provider
+     * @param {IOauthProvider} provider The provider instance to be set
+     * @throws if a provider with the specified type has already been set
+     */
+    public SetOauthProvider&lt;T extends IOauthProvider&gt;(provider: T) {
+        const providerCtor = provider.constructor as {new(...args: any[]): IOauthProvider};
+        if (this._oauthProviders.has(providerCtor)) {
+            throw Error(`Provider for '${providerCtor.name}' already set`);
+        }
+        this._oauthProviders.set(providerCtor, provider);
+    }
+&nbsp;
+    /**
+     * Gets the specified OAuth provider instance
+     * @param {&lt;T&gt;} providerType The provider type to be retrieved
+     * @throws if the provider hasn't been registered
+     */
+    public GetOauthProvider&lt;T extends IOauthProvider&gt;(providerType: {new(...args: any[]): T}): T {
+        if (!this._oauthProviders.has(providerType)) {
+            throw Error(`OAuth provider not found for '${providerType.name}'`);
+        }
+        return this._oauthProviders.get(providerType) as T;
+    }
+&nbsp;
+    /**
+     * Returns the current user's name as a string. In case of unauthenticated users, it will return 'BuiltIn\Visitor'
+     */
+    public get CurrentUser(): string {
+        if (this._tokenStore.AccessToken.IsValid() || this._tokenStore.RefreshToken.IsValid()) {
+            return this._tokenStore.AccessToken.Username || this._tokenStore.RefreshToken.Username;
+        }
+        return this._visitorName;
+    }
+    /**
+     * This observable indicates the current state of the service
+     * @default LoginState.Pending
+     */
+    public get State(): Observable&lt;LoginState&gt; {
+        return this._stateSubject.distinctUntilChanged();
+    }
+&nbsp;
+    /**
+     * Gets the current state of the service
+     * @default LoginState.Pending
+     */
+    public get CurrentState(): LoginState {
+        return this._stateSubject.getValue();
+    }
+&nbsp;
+    /**
+     * The private subject for tracking the login state
+     */
+    protected readonly _stateSubject: BehaviorSubject&lt;LoginState&gt; = new BehaviorSubject&lt;LoginState&gt;(LoginState.Pending);
+&nbsp;
+    /**
+     * The store for JWT tokens
+     */
+    private _tokenStore: TokenStore =
+        new TokenStore(this._repository.Config.RepositoryUrl, this._repository.Config.JwtTokenKeyTemplate, (this._repository.Config.JwtTokenPersist === 'session') ? TokenPersist.Session : TokenPersist.Expiration);
+&nbsp;
+    /**
+     * Executed before each Ajax call. If the access token has been expired, but the refresh token is still valid, it triggers the token refreshing call
+     * @returns {Observable&lt;boolean&gt;} An observable with a variable that indicates if there was a refresh triggered.
+     */
+    public CheckForUpdate(): Observable&lt;boolean&gt; {
+        if (this._tokenStore.AccessToken.IsValid()) {
+            this._stateSubject.next(LoginState.Authenticated);
+            return Observable.from([false]);
+        }
+        if (!this._tokenStore.RefreshToken.IsValid()) {
+            this._stateSubject.next(LoginState.Unauthenticated);
+            return Observable.from([false]);
+        }
+        this._stateSubject.next(LoginState.Pending);
+        return this.execTokenRefresh();
+    }
+&nbsp;
+    /**
+     * Executes the token refresh call. Refresh the token in the Token Store and in the Service, updates the HttpService header
+     * @returns {Observable&lt;boolean&gt;} An observable that will be completed with true on a succesfull refresh
+     */
+    private execTokenRefresh() {
+        const refresh = this._repository.HttpProviderRef.Ajax(RefreshResponse, {
+            method: 'POST',
+            url: ODataHelper.joinPaths(this._repository.Config.RepositoryUrl, 'sn-token/refresh'),
+            headers: {
+                'X-Refresh-Data': this._tokenStore.RefreshToken.toString(),
+                'X-Authentication-Type': 'Token',
+            },
+        });
+&nbsp;
+        refresh.subscribe((response) =&gt; {
+            this._tokenStore.AccessToken = Token.FromHeadAndPayload(response.access);
+            this._stateSubject.next(LoginState.Authenticated);
+        }, (err) =&gt; {
+            this._stateSubject.next(LoginState.Unauthenticated);
+        });
+&nbsp;
+        return refresh.map((response) =&gt; true);
+    }
+&nbsp;
+    /**
+     * @param {BaseRepository} _repository the Repository reference for the Authentication. The service will read its configuration and use its HttpProvider
+     * @constructs JwtService
+     */
+    constructor(protected readonly _repository: BaseRepository) {
+&nbsp;
+        this._stateSubject = new BehaviorSubject&lt;LoginState&gt;(LoginState.Pending);
+&nbsp;
+        this.State.subscribe((s) =&gt; {
+            if (this._tokenStore.AccessToken.IsValid()) {
+                this._repository.HttpProviderRef.SetGlobalHeader('X-Access-Data', this._tokenStore.AccessToken.toString());
+            } else {
+                this._repository.HttpProviderRef.UnsetGlobalHeader('X-Access-Data');
+            }
+        });
+        this.CheckForUpdate();
+    }
+&nbsp;
+    public HandleAuthenticationResponse(response: LoginResponse): boolean {
+        this._tokenStore.AccessToken = Token.FromHeadAndPayload(response.access);
+        this._tokenStore.RefreshToken = Token.FromHeadAndPayload(response.refresh);
+        if (this._tokenStore.AccessToken.IsValid()) {
+            this._stateSubject.next(LoginState.Authenticated);
+            return true;
+        }
+        this._stateSubject.next(LoginState.Unauthenticated);
+        return false;
+    }
+&nbsp;
+    /**
+     * It is possible to send authentication requests using this action. You provide the username and password and will get the User object as the response if the login operation was
+     * successful or HTTP 403 Forbidden message if it wasn’t. If the username does not contain a domain prefix, the configured default domain will be used. After you logged in the user successfully,
+     * you will receive a standard ASP.NET auth cookie which will make sure that your subsequent requests will be authorized correctly.
+     *
+     * The username and password is sent in clear text, always send these kinds of requests through HTTPS.
+     * @param username {string} Name of the user.
+     * @param password {string} Password of the user.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let userLogin = service.Login('alba', 'alba');
+     * userLogin.subscribe({
+     *  next: response =&gt; {
+     *      console.log('Login success', response);
+     *  },
+     *  error: error =&gt; console.error('something wrong occurred: ' + error.responseJSON.error.message.value),
+     *  complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Login(username: string, password: string) {
+        const sub = new Subject&lt;boolean&gt;();
+&nbsp;
+        this._stateSubject.next(LoginState.Pending);
+        const authToken: string = new Buffer(`${username}:${password}`).toString('base64');
+&nbsp;
+        this._repository.HttpProviderRef.Ajax(LoginResponse, {
+            method: 'POST',
+            url: ODataHelper.joinPaths(this._repository.Config.RepositoryUrl, 'sn-token/login'),
+            headers: {
+                'X-Authentication-Type': 'Token',
+                'Authorization': `Basic ${authToken}`,
+            },
+        })
+            .subscribe((r) =&gt; {
+                const result = this.HandleAuthenticationResponse(r);
+                sub.next(result);
+            }, (err) =&gt; {
+                this._stateSubject.next(LoginState.Unauthenticated);
+                sub.next(false);
+            });
+&nbsp;
+        return sub.asObservable();
+    }
+&nbsp;
+    /**
+     * Logs out the current user, sets the tokens to 'empty' and sends a Logout request to invalidate all Http only cookies
+     * @returns {Observable&lt;boolean&gt;} An Observable that will be updated with the logout response
+     */
+    public Logout(): Observable&lt;boolean&gt; {
+        this._tokenStore.AccessToken = Token.CreateEmpty();
+        this._tokenStore.RefreshToken = Token.CreateEmpty();
+        this._stateSubject.next(LoginState.Unauthenticated);
+&nbsp;
+        return this._repository.HttpProviderRef.Ajax(LoginResponse, {
+            method: 'POST',
+            url: ODataHelper.joinPaths(this._repository.Config.RepositoryUrl, 'sn-token/logout'),
+        }).map(() =&gt; true);
+&nbsp;
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 15 2017 10:33:34 GMT+0100 (Central Europe Standard Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

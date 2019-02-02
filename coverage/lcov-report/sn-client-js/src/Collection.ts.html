@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for sn-client-js/src/Collection.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">sn-client-js/src</a> Collection.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.67% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>65/75</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">79.17% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>19/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">77.27% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>17/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">87.14% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>61/70</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @module Collection
+ * @preferred
+ * @description Class that represents a ```generic``` ```Content``` collection.
+ *
+ * It's the basic container type that wraps up a list of ```Content```. It provides methods to manipulate with ```Content``` like fetching, adding or removing data. It not neccesarily represents
+ * a container ```Content``` with a type ```Folder``` or ```ContentList```, it could be also a result of a query. Since it is ```generic``` type of its children items is not defined strictly.
+ */ /** */
+&nbsp;
+import { Observable } from '@reactivex/rxjs';
+import { CustomAction, IODataParams, ODataRequestOptions, ODataApi } from './ODataApi';
+import { ODataHelper } from './SN';
+import { Content } from './Content';
+import { BaseRepository } from './Repository/BaseRepository';
+import { BaseHttpProvider } from './HttpProviders/BaseHttpProvider';
+&nbsp;
+export class Collection&lt;T extends Content&gt; {
+    odata: ODataApi&lt;BaseHttpProvider, Content&gt;;
+    Path: string = '';
+&nbsp;
+    /**
+    * @constructs Collection
+    * @param {T[]} items An array that holds items.
+    * @param { IODataApi&lt;any, any&gt; } service The service to use as API Endpoint
+    */
+    constructor(private items: T[],
+                private repository: BaseRepository,
+                private readonly contentType: {new(...args: any[]): T} = <span class="branch-0 cbranch-no" title="branch not covered" >Content.constructor as {new(...args: any[]): any})</span> {
+        this.odata = repository.GetODataApi();
+    }
+&nbsp;
+    /**
+     * Returns the items of the collection as an array.
+     * @returns {Array}
+     * ```ts
+     * collection.GetItems();
+     * ```
+     */
+    public Items(): T[] {
+        return this.items;
+    }
+&nbsp;
+    /**
+     * Returns an item by the given id.
+     * @param {number} id The content's id
+     * @returns {Content} the specified content
+     * ```ts
+     * collection.GetItem(1234);
+     * ```
+     */
+    public Item(id: number): T | undefined {
+        return this.items.find(i =&gt; i.Id === id);
+    }
+&nbsp;
+    /**
+     * Returns the number of items in the collection.
+     * @returns {number}
+     * ```ts
+     * collection.Count();
+     * ```
+     */
+    public Count(): number {
+        return this.items.length;
+    }
+    /**
+    * Method to add an item to a local collection and to the Content Repository through OData REST API at the same time.
+    *
+     * Calls the method [CreateContent]{@link ODataApi.CreateContent} with the current collections path and the given content as parameters.
+     * @param content {Content} The item that has to be saved.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let addContent = myCollection.Add({DisplayName: 'New content', }});
+     * addContent
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something after delete
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error),
+     *        complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Add(content: T['options']): Observable&lt;T&gt; {
+        const newcontent = this.odata.Post(this.Path, content, this.contentType)
+            .map(<span class="fstat-no" title="function not covered" >resp</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                return this.repository.HandleLoadedContent(resp, this.contentType);</span>
+            });
+        newcontent
+            .subscribe({
+                next: <span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this.items = [</span>
+                        ...this.items,
+                        response
+                    ];
+                }
+            });
+        return newcontent;
+    }
+    /**
+     * Method to remove an item from a local collection and from the Content Repository through OData REST API at the same time.
+     *
+     * Calls the method [DeleteContent]{@link ODataApi.DeleteContent} with the current collections path and the given items index as parameters.
+     * @param index {number} Index of the item in the collection.
+     * @param permanently {bool} Adjust if the Content should be moved to the Trash or deleted permanently.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let deleteContent = myCollection.Remove(3);
+     * deleteContent
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something after delete
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error),
+     *        complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Remove(index: number, permanently?: boolean): Observable&lt;any&gt;;
+    /**
+     * Method to remove an item from a local collection and from the Content Repository through OData REST API at the same time.
+     *
+     * Calls the method [DeleteContent]{@link ODataApi.DeleteContent} with the current collections path and the given items index as parameters.
+     * @param items {number[]} number array of content indexes.
+     * @param permanently {bool} Adjust if the Content should be moved to the Trash or deleted permanently.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let deleteContent = myCollection.Remove([3, 4]);
+     * deleteContent
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something after remove
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error),
+     *        complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Remove(items: number[], permanently?: boolean): Observable&lt;any&gt;;
+    public Remove(arg: any, permanently: boolean = false): Observable&lt;any&gt; {
+        if (typeof arg === 'number') {
+            let content = this.items[arg];
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (content &amp;&amp; content.Id){
+                this.items =
+                    this.items.slice(0, arg)
+                        .concat(this.items.slice(arg + 1));
+&nbsp;
+                return this.odata.Delete(content.Id, permanently ? permanently : false);
+            } else {
+<span class="cstat-no" title="statement not covered" >                return Observable.of(undefined);</span>
+            }
+        }
+        else {
+            let ids = arg.map(i =&gt; this.items[i].Id);
+            this.items =
+                this.items.filter((item, i) =&gt; arg.indexOf(i) &gt; -1);
+            let action = new CustomAction({ name: 'DeleteBatch', path: this.Path, isAction: true, requiredParams: ['paths'] });
+            return this.odata.CreateCustomAction(action, { data: [{ 'paths': ids }, { 'permanently': permanently }] });
+        }
+    }
+    /**
+     * Method to fetch Content from the Content Repository.
+     *
+     * Calls the method [FetchContent]{@link ODataApi.FetchContent} with the current collections path and the given OData options.
+     * If you leave the options undefined only the Id and the Type fields will be in the response. These two fields are always the part of the reponse whether they're added or not to the options 
+     * as selectable.
+     * @param path {string} Path of the requested container item.
+     * @param options {OData.IODataParams} Represents an ODataOptions object based on the IODataOptions interface. Holds the possible url parameters as properties.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let fetchContent = Collection.Read('newsdemo/external', {select: 'DisplayName'}); //gets the list of  the external Articles with their Id, Type and DisplayName fields.
+     * fetchContent
+     *     .map(response =&gt; response.d.results)
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something with the response
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error),
+     *        complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Read(path: string, options?: IODataParams): Observable&lt;any&gt; {
+        this.Path = path;
+        let o = {};
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof options !== 'undefined') {
+<span class="cstat-no" title="statement not covered" >            o['params'] = options;</span>
+        }
+        o['path'] = path;
+        let optionList = new ODataRequestOptions(o as ODataRequestOptions);
+        const children = this.odata.Fetch&lt;T&gt;(optionList);
+        children
+            .subscribe(
+<span class="fstat-no" title="function not covered" >                    (i</span>tems) =&gt; {
+<span class="cstat-no" title="statement not covered" >                        this.items = items.d.results.map(<span class="fstat-no" title="function not covered" >c </span>=&gt; <span class="cstat-no" title="statement not covered" >this.repository.HandleLoadedContent(c, this.contentType))</span>;</span>
+                    }
+            );
+        return children;
+    }
+    /**
+     * Method to move a content to another container.
+     * @params index {number} Id of the content that have to be moved.
+     * @params targetPath {string} Path of the target container.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let move = myCollection.Move(3, '/Root/MyContent/MyFolder');
+     * move
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something after move
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error),
+     *        complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Move(index: number, targetPath: string): Observable&lt;any&gt;;
+    /**
+     * Method to move multiple content to another container.
+     * @param items {number[]} number array of content indexes.
+     * @params targetPath {string} Path of the target container.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let move = myCollection.Move([3, 5], '/Root/MyContent/MyFolder');
+     * move
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something after move
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error),
+     *        complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Move(items: number[], targetPath: string): Observable&lt;any&gt;;
+    public Move(arg: any, targetPath: string): Observable&lt;any&gt; {
+        if (typeof arg === 'number') {
+            this.items =
+                this.items.slice(0, arg)
+                    .concat(this.items.slice(arg + 1));
+            let action = new CustomAction({ name: 'Move', id: arg, isAction: true, requiredParams: ['targetPath'] });
+            return this.odata.CreateCustomAction(action, { data: [{ 'targetPath': targetPath }] });
+        }
+        else {
+            let ids = arg.map(i =&gt; this.items[i].Id);
+            this.items =
+                this.items.filter((item, i) =&gt; arg.indexOf(i) &gt; -1);
+            let action = new CustomAction({ name: 'MoveBatch', path: this.Path, isAction: true, requiredParams: ['paths', 'targetPath'] });
+            return this.odata.CreateCustomAction(action, { data: [{ 'paths': ids, 'targetPath': targetPath }] });
+        }
+    }
+    /**
+     * Method to copy a content to another container.
+     * @params index {number} Id of the content that have to be moved.
+     * @params targetPath {string} Path of the target container.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let copy = myCollection.Copy(3, '/Root/MyContent/MyFolder');
+     * copy
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something after copy
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error),
+     *        complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Copy(index: number, targetPath: string): Observable&lt;any&gt;;
+    /**
+     * Method to copy multiple content to another container.
+     * @param items {number[]} number array of content indexes.
+     * @params targetPath {string} Path of the target container.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let copy = myCollection.Copy([3, 5], '/Root/MyContent/MyFolder');
+     * copy
+     *     .subscribe({
+     *        next: response =&gt; {
+     *            //do something after copy
+     *        },
+     *        error: error =&gt; console.error('something wrong occurred: ' + error),
+     *        complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public Copy(items: number[], targetPath: string): Observable&lt;any&gt;;
+    public Copy(arg: any, targetPath: string): Observable&lt;any&gt; {
+        if (typeof arg === 'number') {
+            let action = new CustomAction({ name: 'Copy', id: arg, isAction: true, requiredParams: ['targetPath'] });
+            return this.odata.CreateCustomAction(action, { data: [{ 'targetPath': targetPath }] });
+        }
+        else {
+            let ids = arg.map(i =&gt; this.items[i].Id);
+            let action = new CustomAction({ name: 'CopyBatch', path: this.Path, isAction: true, requiredParams: ['paths', 'targetPath'] });
+            return this.odata.CreateCustomAction(action, { data: [{ 'paths': ids, 'targetPath': targetPath }] });
+        }
+    }
+    /**
+     * Method that returns the list of types which can be added as children to the collection.
+     * @params options {Object} JSON object with the possible ODATA parameters like select, expand, etc.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     * ```
+     * let allowedChildTypes = collection.AllowedChildTypes();
+     * allowedChildTypes.subscribe({
+     *  next: response =&gt; {
+     *      console.log(response);
+     *  },
+     *  error: error =&gt; console.error('something wrong occurred: ' + error.responseJSON.error.message.value),
+     *  complete: () =&gt; console.log('done'),
+     * });
+     * ```
+     */
+    public AllowedChildTypes(options?: Object): Observable&lt;any&gt; {
+        let o = {};
+        if (options) {
+            o['params'] = options;
+        }
+        o['path'] = ODataHelper.getContentURLbyPath(this.Path);
+        let optionList = new ODataRequestOptions(o as ODataRequestOptions);
+        return this.odata.Get&lt;T&gt;(optionList);
+    }
+    /**
+     * Uploads a stream or text to a content binary field (e.g. a file).
+     * @params ContentType {string=} Specific content type name for the uploaded content. If not provided, the system will try to determine it from the current environment: the upload content types configured in the 
+     * web.config and the allowed content types in the particular folder. In most cases, this will be File.
+     * @params FileName {string} Name of the uploaded file.
+     * @params Overwrite {bool=True} Whether the upload action should overwrite a content if it already exist with the same name. If false, a new file will be created with a similar name containing an 
+     * incremental number (e.g. sample(2).docx).
+     * @params UseChunk {bool=False} Determines whether the system should start a chunk upload process instead of saving the file in one round. Usually this is determined by the size of the file. 
+     * It's optional, used in the first request
+     * @params PropertyName {string=Binary} Appoints the binary field of the content where the data should be saved.
+     * @params ChunkToken {string} The response of first request returns this token. It must be posted in all of the subsequent requests without modification. It is used for executing the chunk upload operation. 
+     * It's mandatory, except in the first request
+     * @params {FileText} In case you do not have the file as a real file in the file system but a text in the browser, you can provide the raw text in this parameter.
+     * @returns {Observable} Returns an RxJS observable that you can subscribe of in your code.
+     */
+    public Upload(contentType: string, fileName: string, overwrite: boolean = true, useChunk: boolean = false, propertyName?: string, fileText?: string): Observable&lt;any&gt; {
+        const data = {
+            ContentType: contentType,
+            FileName: fileName,
+            Overwrite: overwrite,
+            UseChunk: useChunk
+        };
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof propertyName !== 'undefined') {
+<span class="cstat-no" title="statement not covered" >            data['PropertyName'] = propertyName;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof fileText !== 'undefined') {
+<span class="cstat-no" title="statement not covered" >            data['FileText'] = fileText;</span>
+        }
+        let uploadCreation = this.odata.Upload(this.Path, data, true);
+        uploadCreation.subscribe({
+            next: <span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
+                const data = <span class="cstat-no" title="statement not covered" >{</span>
+                    ContentType: contentType,
+                    FileName: fileName,
+                    Overwrite: overwrite,
+                    ChunkToken: response
+                };
+<span class="cstat-no" title="statement not covered" >                return this.odata.Upload(this.Path, data, false);</span>
+            }
+        });
+        return uploadCreation;
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jul 19 2017 11:37:40 GMT+0200 (Central Europe Daylight Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

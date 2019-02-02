@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for sn-client-js/src/ControlMapper.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">sn-client-js/src</a> ControlMapper.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>46/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92.86% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>13/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>15/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>45/45</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">333x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">333x</span>
+<span class="cline-any cline-yes">333x</span>
+<span class="cline-any cline-yes">19469x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18269x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">600x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">600x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">333x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">281x</span>
+<span class="cline-any cline-yes">281x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1975x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">279x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">278x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">275x</span>
+<span class="cline-any cline-yes">275x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">273x</span>
+<span class="cline-any cline-yes">273x</span>
+<span class="cline-any cline-yes">273x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * 
+ * @module ControlMapper
+ * 
+ * @preferred
+ * 
+ * @description Module for mapping controls content types and / or field settings to specified front-end controls
+ *
+ * ```
+ * let controlMapper = new ControlMapper(MyBaseControlClass, myConfigFactory, DefaultViewComponent, DefaultFieldComponent)
+ *       .SetupFieldSettingDefault(FieldSettings.ShortTextFieldSetting, (setting) =&gt; {
+ *          switch (setting.Name) {
+ *              case 'Name':
+ *                  return NameField;
+ *              case 'DisplayName':
+ *                  return DisplayName;
+ *              default:
+ *                  break;
+ *          }
+ *          return ShortText;
+ *       })
+ * 
+ * ```
+ */ /** */
+&nbsp;
+import { Content } from './Content';
+import * as FieldSettings from './FieldSettings';
+import { Schemas } from './SN';
+&nbsp;
+export type ActionName = 'new' | 'edit' | 'view';
+&nbsp;
+export class ControlSchema&lt;TControlBaseType, TClientControlSettings&gt; {
+    ContentTypeControl: {new(...args: any[]): TControlBaseType};
+    Schema: Schemas.Schema&lt;Content&gt;;
+    FieldMappings: {FieldSettings: FieldSettings.FieldSetting, ControlType: {new(...args: any[]): TControlBaseType}, ClientSettings: TClientControlSettings}[];
+}
+&nbsp;
+export class ControlMapper&lt;TControlBaseType, TClientControlSettings&gt; {
+&nbsp;
+    constructor(
+        public readonly controlBaseType: { new (...args: any[]): TControlBaseType },
+        private readonly clientControlSettingsFactory: (fieldSetting: FieldSettings.FieldSetting) =&gt; TClientControlSettings,
+        private readonly defaultControlType?: { new (...args: any[]): TControlBaseType },
+        private readonly defaultFieldSettingControlType?: { new (...args: any[]): TControlBaseType },
+    ) {
+    }
+&nbsp;
+    /**
+     * Method for getting a specified Schema object for a content type. The FieldSettings will be filtered based on the provided actionName.
+     * @param contentType The type of the content (e.g. ContentTypes.Task)
+     * @param actionName The name of the action. Can be 'new' / 'view' / 'edit'
+     */
+    private GetTypeSchema&lt;TContentType extends Content&gt;(contentType: { new (args: any[]): TContentType }, actionName: ActionName): Schemas.Schema&lt;TContentType&gt; {
+        const schema = new Schemas.Schema&lt;TContentType&gt;(Content.GetSchema(contentType));
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (actionName) {
+            schema.FieldSettings = schema.FieldSettings.filter(s =&gt; {
+                switch (actionName) {
+                    case 'new':
+                        return s.VisibleNew === FieldSettings.FieldVisibility.Show;
+                    case 'edit':
+                        return s.VisibleEdit === FieldSettings.FieldVisibility.Show;
+                    case 'view':
+                        return s.VisibleBrowse === FieldSettings.FieldVisibility.Show;
+                }
+            })
+        }
+        return schema;
+    }
+&nbsp;
+    private contentTypeControlMaps: { new (...args: any[]): TControlBaseType }[] = [];
+&nbsp;
+    /**
+     * Maps a specified Control to a Content type
+     * @param content The Content to be mapped
+     * @param control The Control for the content
+     * @returns {ControlMapper}
+     */
+    public MapContentTypeToControl(contentType: { new (...args: any[]): Content }, control: { new (...args: any[]): TControlBaseType }) {
+        this.contentTypeControlMaps[contentType.name as any] = control;
+        return this;
+    }
+&nbsp;
+    /**
+     *
+     * @param content The content to get the control for.
+     * @returns {TControlBaseType} The mapped control, Default if nothing is mapped.
+     */
+    public GetControlForContentType&lt;TContentType extends Content&gt;(contentType: { new (...args: any[]): TContentType }) {
+        return this.contentTypeControlMaps[contentType.name as any] || this.defaultControlType;
+    }
+&nbsp;
+&nbsp;
+    private fieldSettingDefaults: ((fieldSetting: FieldSettings.FieldSetting) =&gt; { new (...args: any[]): TControlBaseType })[] = [];
+&nbsp;
+&nbsp;
+    /**
+     * 
+     * @param fieldSetting The FieldSetting to get the control for.
+     * @param setupControl Callback method that returns a Control Type based on the provided FieldSetting
+     * @returns the Mapper instance (can be used fluently)
+     */
+    public SetupFieldSettingDefault&lt;TFieldSettingType extends FieldSettings.FieldSetting&gt;(
+        fieldSetting: { new (...args: any[]): TFieldSettingType },
+        setupControl: (fieldSetting: TFieldSettingType) =&gt; { new (...args: any[]): TControlBaseType }
+    ) {
+        this.fieldSettingDefaults[fieldSetting.name as any] = setupControl;
+        return this;
+    }
+&nbsp;
+    /**
+     * @returns {TControlBaseType} The specified FieldSetting control
+     * @param fieldSetting The FieldSetting to get the control class.
+     */
+    public GetControlForFieldSetting&lt;TFieldSettingType extends FieldSettings.FieldSetting&gt;(fieldSetting: TFieldSettingType): { new (...args: any[]): TControlBaseType } {
+        const fieldSettingSetup = this.fieldSettingDefaults[fieldSetting.constructor.name as any];
+        return fieldSettingSetup &amp;&amp; fieldSettingSetup(fieldSetting) || this.defaultFieldSettingControlType;
+    }
+&nbsp;
+    private contentTypeBoundfieldSettings: ((fieldSetting: FieldSettings.FieldSetting) =&gt; { new (...args: any[]): TControlBaseType })[] = [];
+&nbsp;
+    /**
+     * 
+     * @param contentType The Content Type 
+     * @param fieldName The name of the field on the Content Type
+     * @param setupControl The callback function that will setup the Control
+     * @param fieldSetting Optional type hint for the FieldSetting
+     */
+&nbsp;
+    public SetupFieldSettingForControl&lt;TFieldSettingType extends FieldSettings.FieldSetting, TContentType extends Content, TField extends keyof TContentType&gt;(
+        contentType: { new (...args: any[]): TContentType },
+        fieldName: TField,
+        setupControl: (fieldSetting: TFieldSettingType) =&gt; { new (...args: any[]): TControlBaseType },
+        fieldSetting?: { new (...args: any[]): TFieldSettingType },
+&nbsp;
+    ) {
+        this.contentTypeBoundfieldSettings[`${contentType.name}-${fieldName}` as any] = setupControl;
+        return this;
+    }
+&nbsp;
+&nbsp;
+    /**
+     * 
+     * @param contentType The type of the content (e.g. ContentTypes.Task)
+     * @param fieldName The name of the field (must be one of the ContentType's fields), e.g. 'DisplayName'
+     * @param actionName The name of the Action (can be 'new' / 'edit' / 'view')
+     * @returns The assigned Control constructor or the default Field control
+     */
+    public GetControlForContentField&lt;TContentType extends Content, TField extends keyof TContentType&gt;(
+        contentType: { new (...args: any[]): TContentType },
+        fieldName: TField,
+        actionName: ActionName
+    ): {new(...args: any[]): TControlBaseType} {
+&nbsp;
+        const fieldSetting = this.GetTypeSchema(contentType, actionName).FieldSettings.filter(s =&gt; s.Name === fieldName)[0];
+&nbsp;
+        if (this.contentTypeBoundfieldSettings[`${contentType.name}-${fieldName}` as any]) {
+            return this.contentTypeBoundfieldSettings[`${contentType.name}-${fieldName}` as any](fieldSetting);
+        }
+        else {
+            return this.GetControlForFieldSetting(fieldSetting);
+        }
+    }
+&nbsp;
+    private fieldSettingBoundClientSettingFactories: ((setting: FieldSettings.FieldSetting) =&gt; TClientControlSettings)[] = []
+    
+    /**
+     * Sets up a Factory method to create library-specific settings from FieldSettings per type
+     * @param fieldSettingType The type of the FieldSetting (e.g. FieldSettings.ShortTextFieldSetting)
+     * @param factoryMethod The factory method that constructs or transforms the Settings object
+     */
+    public SetClientControlFactory&lt;TFieldSetting extends FieldSettings.FieldSetting&gt;(fieldSettingType: {new(...args: any[]): TFieldSetting}, factoryMethod: (setting: TFieldSetting) =&gt; TClientControlSettings){
+        this.fieldSettingBoundClientSettingFactories[fieldSettingType.name as any] = factoryMethod;
+        return this;
+    }
+&nbsp;
+    /**
+     * Creates a ClientSetting from a specified FieldSetting based on the assigned Factory method
+     * @param fieldSetting The FieldSetting object that should be used for creating the new Setting entry
+     * @returns the created or transformed Client Setting
+     */
+    public CreateClientSetting&lt;TFieldSetting extends FieldSettings.FieldSetting&gt;(fieldSetting: TFieldSetting){
+        const factoryMethod = this.fieldSettingBoundClientSettingFactories[fieldSetting.constructor.name as any] || this.clientControlSettingsFactory;
+        return factoryMethod(fieldSetting);
+    }
+&nbsp;
+    /**
+     * Gets the full ControlSchema object for a specific ContentType
+     * @param contentType The type of the Content (e.g. ContentTypes.Task)
+     * @param actionName The name of the Action (can be 'new' / 'edit' / 'view')
+     * @returns the fully created ControlSchema
+     */
+    public GetFullSchemaForContentType&lt;TContentType extends Content, K extends keyof TContentType&gt;(
+        contentType: { new (...args: any[]): TContentType },
+        actionName: ActionName): 
+        ControlSchema&lt;TControlBaseType, TClientControlSettings&gt; {
+        const schema = this.GetTypeSchema(contentType, actionName);
+        const mappings = schema.FieldSettings.map(f =&gt; {
+            const clientSetting: TClientControlSettings = this.CreateClientSetting(f);
+            const control: {new(...args: any[]): TControlBaseType} = this.GetControlForContentField&lt;TContentType, K&gt;(contentType, f.Name as K, actionName);
+            return {
+                FieldSettings: f,
+                ClientSettings: clientSetting,
+                ControlType: control
+            };
+        });
+        return {
+            Schema: schema,
+            ContentTypeControl: this.GetControlForContentType(contentType),
+            FieldMappings: mappings
+        }
+    }
+&nbsp;
+    /**
+     * Gets the full ControlSchema object for a specific Content
+     * @param contentType The type of the Content (e.g. ContentTypes.Task)
+     * @param actionName The name of the Action (can be 'new' / 'edit' / 'view')
+     * @returns the fully created ControlSchema
+     */    
+    public GetFullSchemaForContent&lt;TContentType extends Content&gt;(content: TContentType, actionName: ActionName){
+        return this.GetFullSchemaForContentType(content.constructor as {new(...args: any[])}, actionName);
+    }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jul 19 2017 11:37:40 GMT+0200 (Central Europe Daylight Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

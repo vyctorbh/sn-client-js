@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dist/src/ContentReferences.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">dist/src</a> ContentReferences.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/73</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/69</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+<span class="cstat-no" title="statement not covered" >Object.defineProperty(exports, "__esModule", { value: true });</span>
+const Observable_1 = <span class="cstat-no" title="statement not covered" >require("rxjs/Observable");</span>
+const Content_1 = <span class="cstat-no" title="statement not covered" >require("./Content");</span>
+const Query_1 = <span class="cstat-no" title="statement not covered" >require("./Query");</span>
+const SN_1 = <span class="cstat-no" title="statement not covered" >require("./SN");</span>
+class ReferenceAbstract {
+<span class="fstat-no" title="function not covered" >    co</span>nstructor() {
+<span class="cstat-no" title="statement not covered" >        this._isDirty = false;</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t IsDirty() {
+<span class="cstat-no" title="statement not covered" >        return this._isDirty;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Se</span>arch(term, top = <span class="branch-0 cbranch-no" title="branch not covered" >10,</span> skip = <span class="branch-0 cbranch-no" title="branch not covered" >0,</span> odataParams = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+<span class="cstat-no" title="statement not covered" >        return new Query_1.FinializedQuery(<span class="fstat-no" title="function not covered" >(q</span>) =&gt; {</span>
+            let query = <span class="cstat-no" title="statement not covered" >q.Equals('_Text', `*${term}*`);</span>
+<span class="cstat-no" title="statement not covered" >            if (this.FieldSetting.SelectionRoots &amp;&amp; this.FieldSetting.SelectionRoots.length) {</span>
+<span class="cstat-no" title="statement not covered" >                query = query.And.Query(<span class="fstat-no" title="function not covered" >(i</span>nnerTree) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    this.FieldSetting.SelectionRoots &amp;&amp; this.FieldSetting.SelectionRoots.forEach(<span class="fstat-no" title="function not covered" >(r</span>oot, index, thisArray) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                        innerTree = innerTree.InTree(root);</span>
+<span class="cstat-no" title="statement not covered" >                        if (index &lt; thisArray.length - 1) {</span>
+<span class="cstat-no" title="statement not covered" >                            innerTree = innerTree.Or;</span>
+                        }
+                    });
+<span class="cstat-no" title="statement not covered" >                    return innerTree;</span>
+                });
+            }
+<span class="cstat-no" title="statement not covered" >            if (this.FieldSetting.AllowedTypes &amp;&amp; this.FieldSetting.AllowedTypes.length) {</span>
+                const foundTypes = <span class="cstat-no" title="statement not covered" >this.FieldSetting.AllowedTypes.map(<span class="fstat-no" title="function not covered" >(t</span>ype) =&gt; <span class="cstat-no" title="statement not covered" >SN_1.ContentTypes[type])</span>.filter(<span class="fstat-no" title="function not covered" >(a</span>) =&gt; <span class="cstat-no" title="statement not covered" >a !== undefined)</span>;</span>
+<span class="cstat-no" title="statement not covered" >                if (foundTypes.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                    query = query.And.Query(<span class="fstat-no" title="function not covered" >(i</span>nnerTypes) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                        foundTypes.forEach(<span class="fstat-no" title="function not covered" >(t</span>ype, index, thisArray) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                            innerTypes = innerTypes.Type(type);</span>
+<span class="cstat-no" title="statement not covered" >                            if (index &lt; thisArray.length - 1) {</span>
+<span class="cstat-no" title="statement not covered" >                                innerTypes = innerTypes.Or;</span>
+                            }
+                        });
+<span class="cstat-no" title="statement not covered" >                        return innerTypes;</span>
+                    });
+                }
+            }
+<span class="cstat-no" title="statement not covered" >            return query.Top(top).Skip(skip);</span>
+        }, this.Repository, '/Root', odataParams);
+    }
+}
+<span class="cstat-no" title="statement not covered" >exports.ReferenceAbstract = ReferenceAbstract;</span>
+class ContentReferenceField extends ReferenceAbstract {
+<span class="fstat-no" title="function not covered" >    co</span>nstructor(fieldData, FieldSetting, Repository) {
+<span class="cstat-no" title="statement not covered" >        super();</span>
+<span class="cstat-no" title="statement not covered" >        this.FieldSetting = FieldSetting;</span>
+<span class="cstat-no" title="statement not covered" >        this.Repository = Repository;</span>
+<span class="cstat-no" title="statement not covered" >        this.HandleLoaded(fieldData);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Se</span>tContent(content) {
+<span class="cstat-no" title="statement not covered" >        this._contentReference = content;</span>
+<span class="cstat-no" title="statement not covered" >        this._isDirty = true;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tContent(odataOptions) {
+<span class="cstat-no" title="statement not covered" >        if (this._contentReference !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            return Observable_1.Observable.of(this._contentReference);</span>
+        }
+        const request = <span class="cstat-no" title="statement not covered" >this.Repository.GetODataApi().Get({ path: this._referenceUrl, params: odataOptions })</span>
+            .map(<span class="fstat-no" title="function not covered" >(r</span>) =&gt; {
+<span class="cstat-no" title="statement not covered" >            return r &amp;&amp; r.d &amp;&amp; this.Repository.HandleLoadedContent(r.d);</span>
+        }).share();
+<span class="cstat-no" title="statement not covered" >        request.subscribe(<span class="fstat-no" title="function not covered" >(c</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            this._contentReference = c || null;</span>
+        });
+<span class="cstat-no" title="statement not covered" >        return request;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tValue() {
+<span class="cstat-no" title="statement not covered" >        return this._contentReference &amp;&amp; this._contentReference.Path;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ha</span>ndleLoaded(fieldData) {
+<span class="cstat-no" title="statement not covered" >        if (Content_1.isDeferred(fieldData)) {</span>
+<span class="cstat-no" title="statement not covered" >            this._referenceUrl = fieldData.__deferred.uri.replace(this.Repository.Config.ODataToken, '');</span>
+        }
+        else <span class="cstat-no" title="statement not covered" >if (Content_1.isIContent(fieldData)) {</span>
+<span class="cstat-no" title="statement not covered" >            this._contentReference = this.Repository.HandleLoadedContent(fieldData);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this._isDirty = false;</span>
+    }
+}
+<span class="cstat-no" title="statement not covered" >exports.ContentReferenceField = ContentReferenceField;</span>
+class ContentListReferenceField extends ReferenceAbstract {
+<span class="fstat-no" title="function not covered" >    co</span>nstructor(fieldData, FieldSetting, Repository) {
+<span class="cstat-no" title="statement not covered" >        super();</span>
+<span class="cstat-no" title="statement not covered" >        this.FieldSetting = FieldSetting;</span>
+<span class="cstat-no" title="statement not covered" >        this.Repository = Repository;</span>
+<span class="cstat-no" title="statement not covered" >        this.HandleLoaded(fieldData);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Se</span>tContent(content) {
+<span class="cstat-no" title="statement not covered" >        this._contentReferences = content;</span>
+<span class="cstat-no" title="statement not covered" >        this._isDirty = true;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tContent(odataOptions) {
+<span class="cstat-no" title="statement not covered" >        if (this._contentReferences) {</span>
+<span class="cstat-no" title="statement not covered" >            return Observable_1.Observable.of(this._contentReferences);</span>
+        }
+        const request = <span class="cstat-no" title="statement not covered" >this.Repository.GetODataApi().Fetch({</span>
+            path: this._referenceUrl,
+            params: odataOptions
+        }).map(<span class="fstat-no" title="function not covered" >(r</span>esp) =&gt; {
+<span class="cstat-no" title="statement not covered" >            return resp &amp;&amp; resp.d &amp;&amp; resp.d.results.map(<span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.Repository.HandleLoadedContent(c))</span> || [];</span>
+        }).share();
+<span class="cstat-no" title="statement not covered" >        request.subscribe(<span class="fstat-no" title="function not covered" >(c</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            this._contentReferences = c;</span>
+        });
+<span class="cstat-no" title="statement not covered" >        return request;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tValue() {
+<span class="cstat-no" title="statement not covered" >        return this._contentReferences &amp;&amp; this._contentReferences</span>
+            .filter(<span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >c.Path &amp;&amp; c.Path.length)</span>
+            .map(<span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >c.Path)</span>;
+    }
+<span class="fstat-no" title="function not covered" >    Ha</span>ndleLoaded(fieldData) {
+<span class="cstat-no" title="statement not covered" >        if (Content_1.isDeferred(fieldData)) {</span>
+<span class="cstat-no" title="statement not covered" >            this._referenceUrl = fieldData.__deferred.uri.replace(this.Repository.Config.ODataToken, '');</span>
+        }
+        else <span class="cstat-no" title="statement not covered" >if (SN_1.isIContentList(fieldData)) {</span>
+<span class="cstat-no" title="statement not covered" >            this._contentReferences = fieldData.map(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.Repository.HandleLoadedContent(f))</span>;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this._isDirty = false;</span>
+    }
+}
+<span class="cstat-no" title="statement not covered" >exports.ContentListReferenceField = ContentListReferenceField;</span>
+//# sourceMappingURL=ContentReferences.js.map</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 03 2017 10:37:56 GMT+0100 (Central Europe Standard Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

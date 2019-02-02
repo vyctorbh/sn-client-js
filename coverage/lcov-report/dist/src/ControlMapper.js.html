@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dist/src/ControlMapper.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">dist/src</a> ControlMapper.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/45</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+<span class="cstat-no" title="statement not covered" >Object.defineProperty(exports, "__esModule", { value: true });</span>
+const FieldSettings = <span class="cstat-no" title="statement not covered" >require("./FieldSettings");</span>
+class ControlSchema {
+}
+<span class="cstat-no" title="statement not covered" >exports.ControlSchema = ControlSchema;</span>
+class ControlMapper {
+<span class="fstat-no" title="function not covered" >    co</span>nstructor(_repository, ControlBaseType, _clientControlSettingsFactory, _defaultControlType, _defaultFieldSettingControlType) {
+<span class="cstat-no" title="statement not covered" >        this._repository = _repository;</span>
+<span class="cstat-no" title="statement not covered" >        this.ControlBaseType = ControlBaseType;</span>
+<span class="cstat-no" title="statement not covered" >        this._clientControlSettingsFactory = _clientControlSettingsFactory;</span>
+<span class="cstat-no" title="statement not covered" >        this._defaultControlType = _defaultControlType;</span>
+<span class="cstat-no" title="statement not covered" >        this._defaultFieldSettingControlType = _defaultFieldSettingControlType;</span>
+<span class="cstat-no" title="statement not covered" >        this._contentTypeControlMaps = [];</span>
+<span class="cstat-no" title="statement not covered" >        this._fieldSettingDefaults = new Map();</span>
+<span class="cstat-no" title="statement not covered" >        this._contentTypeBoundfieldSettings = new Map();</span>
+<span class="cstat-no" title="statement not covered" >        this._fieldSettingBoundClientSettingFactories = new Map();</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>tTypeSchema(contentType, actionName) {
+        const schema = <span class="cstat-no" title="statement not covered" >this._repository.GetSchema(contentType);</span>
+<span class="cstat-no" title="statement not covered" >        if (actionName) {</span>
+<span class="cstat-no" title="statement not covered" >            schema.FieldSettings = schema.FieldSettings.filter(<span class="fstat-no" title="function not covered" >(s</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                switch (actionName) {</span>
+                    case 'new':
+<span class="cstat-no" title="statement not covered" >                        return s.VisibleNew === FieldSettings.FieldVisibility.Show;</span>
+                    case 'edit':
+<span class="cstat-no" title="statement not covered" >                        return s.VisibleEdit === FieldSettings.FieldVisibility.Show;</span>
+                    case 'view':
+<span class="cstat-no" title="statement not covered" >                        return s.VisibleBrowse === FieldSettings.FieldVisibility.Show;</span>
+                }
+            });
+        }
+<span class="cstat-no" title="statement not covered" >        return schema;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ma</span>pContentTypeToControl(contentType, control) {
+<span class="cstat-no" title="statement not covered" >        this._contentTypeControlMaps[contentType.name] = control;</span>
+<span class="cstat-no" title="statement not covered" >        return this;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tControlForContentType(contentType) {
+<span class="cstat-no" title="statement not covered" >        return this._contentTypeControlMaps[contentType.name] || this._defaultControlType;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Se</span>tupFieldSettingDefault(fieldSetting, setupControl) {
+<span class="cstat-no" title="statement not covered" >        this._fieldSettingDefaults.set(fieldSetting.name, setupControl);</span>
+<span class="cstat-no" title="statement not covered" >        return this;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tControlForFieldSetting(fieldSetting) {
+        const fieldSettingSetup = <span class="cstat-no" title="statement not covered" >this._fieldSettingDefaults.get(fieldSetting.Type);</span>
+<span class="cstat-no" title="statement not covered" >        return fieldSettingSetup &amp;&amp; fieldSettingSetup(fieldSetting) || this._defaultFieldSettingControlType;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Se</span>tupFieldSettingForControl(contentType, fieldName, setupControl, fieldSetting) {
+<span class="cstat-no" title="statement not covered" >        this._contentTypeBoundfieldSettings.set(`${contentType.name}-${fieldName}`, setupControl);</span>
+<span class="cstat-no" title="statement not covered" >        return this;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tControlForContentField(contentType, fieldName, actionName) {
+        const fieldSetting = <span class="cstat-no" title="statement not covered" >this.getTypeSchema(contentType, actionName).FieldSettings.filter(<span class="fstat-no" title="function not covered" >(s</span>) =&gt; <span class="cstat-no" title="statement not covered" >s.Name === fieldName)</span>[0];</span>
+<span class="cstat-no" title="statement not covered" >        if (this._contentTypeBoundfieldSettings.has(`${contentType.name}-${fieldName}`)) {</span>
+<span class="cstat-no" title="statement not covered" >            return this._contentTypeBoundfieldSettings.get(`${contentType.name}-${fieldName}`)(fieldSetting);</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            return this.GetControlForFieldSetting(fieldSetting);</span>
+        }
+    }
+<span class="fstat-no" title="function not covered" >    Se</span>tClientControlFactory(fieldSettingType, factoryMethod) {
+<span class="cstat-no" title="statement not covered" >        this._fieldSettingBoundClientSettingFactories.set(fieldSettingType.name, factoryMethod);</span>
+<span class="cstat-no" title="statement not covered" >        return this;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Cr</span>eateClientSetting(fieldSetting) {
+        const factoryMethod = <span class="cstat-no" title="statement not covered" >this._fieldSettingBoundClientSettingFactories.get(fieldSetting.Type) || this._clientControlSettingsFactory;</span>
+<span class="cstat-no" title="statement not covered" >        return factoryMethod(fieldSetting);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tFullSchemaForContentType(contentType, actionName) {
+        const schema = <span class="cstat-no" title="statement not covered" >this.getTypeSchema(contentType, actionName);</span>
+        const mappings = <span class="cstat-no" title="statement not covered" >schema.FieldSettings.map(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; {</span>
+            const clientSetting = <span class="cstat-no" title="statement not covered" >this.CreateClientSetting(f);</span>
+            const control = <span class="cstat-no" title="statement not covered" >this.GetControlForContentField(contentType, f.Name, actionName);</span>
+<span class="cstat-no" title="statement not covered" >            return {</span>
+                FieldSettings: f,
+                ClientSettings: clientSetting,
+                ControlType: control
+            };
+        });
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            Schema: schema,
+            ContentTypeControl: this.GetControlForContentType(contentType),
+            FieldMappings: mappings
+        };
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tFullSchemaForContent(content, actionName) {
+<span class="cstat-no" title="statement not covered" >        return this.GetFullSchemaForContentType(content.constructor, actionName);</span>
+    }
+}
+<span class="cstat-no" title="statement not covered" >exports.ControlMapper = ControlMapper;</span>
+//# sourceMappingURL=ControlMapper.js.map</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 07 2017 13:28:57 GMT+0100 (Central Europe Standard Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

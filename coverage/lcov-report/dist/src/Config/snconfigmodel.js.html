@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dist/src/Config/snconfigmodel.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">dist/src/Config</a> snconfigmodel.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/39</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/41</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var __decorate = <span class="cstat-no" title="statement not covered" >(this &amp;&amp; this.__decorate) || <span class="fstat-no" title="function not covered" >fu</span>nction (decorators, target, key, desc) {</span>
+    var c = <span class="cstat-no" title="statement not covered" >arguments.length,</span> r = <span class="cstat-no" title="statement not covered" >c &lt; 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,</span> d;
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") <span class="cstat-no" title="statement not covered" >r = Reflect.decorate(decorators, target, key, desc);</span></span>
+    else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
+<span class="cstat-no" title="statement not covered" >    return c &gt; 3 &amp;&amp; r &amp;&amp; Object.defineProperty(target, key, r), r;</span>
+};
+var __metadata = <span class="cstat-no" title="statement not covered" >(this &amp;&amp; this.__metadata) || <span class="fstat-no" title="function not covered" >fu</span>nction (k, v) {</span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") <span class="cstat-no" title="statement not covered" >return Reflect.metadata(k, v);</span></span>
+};
+<span class="cstat-no" title="statement not covered" >Object.defineProperty(exports, "__esModule", { value: true });</span>
+const snconfigbehavior_1 = <span class="cstat-no" title="statement not covered" >require("./snconfigbehavior");</span>
+const snconfigfielddecorator_1 = <span class="cstat-no" title="statement not covered" >require("./snconfigfielddecorator");</span>
+class SnConfigModel {
+<span class="fstat-no" title="function not covered" >    co</span>nstructor(config) {
+<span class="cstat-no" title="statement not covered" >        this.RepositoryUrl = SnConfigModel.DEFAULT_BASE_URL;</span>
+<span class="cstat-no" title="statement not covered" >        this.ODataToken = SnConfigModel.DEFAULT_SERVICE_TOKEN;</span>
+<span class="cstat-no" title="statement not covered" >        this.JwtTokenKeyTemplate = 'sn-${siteName}-${tokenName}';</span>
+<span class="cstat-no" title="statement not covered" >        this.JwtTokenPersist = 'session';</span>
+<span class="cstat-no" title="statement not covered" >        this.DefaultSelect = ['DisplayName', 'Description', 'Icon'];</span>
+<span class="cstat-no" title="statement not covered" >        this.RequiredSelect = ['Id', 'Path', 'Name', 'Type'];</span>
+<span class="cstat-no" title="statement not covered" >        this.DefaultMetadata = 'no';</span>
+<span class="cstat-no" title="statement not covered" >        this.DefaultInlineCount = 'allpages';</span>
+<span class="cstat-no" title="statement not covered" >        this.DefaultExpand = undefined;</span>
+<span class="cstat-no" title="statement not covered" >        this.DefaultTop = 1000;</span>
+<span class="cstat-no" title="statement not covered" >        this.ChunkSize = 1024 * 1024;</span>
+<span class="cstat-no" title="statement not covered" >        if (config) {</span>
+<span class="cstat-no" title="statement not covered" >            for (const key in config) {</span>
+<span class="cstat-no" title="statement not covered" >                if (config[key]) {</span>
+<span class="cstat-no" title="statement not covered" >                    this[key] = config[key];</span>
+                }
+            }
+        }
+    }
+<span class="fstat-no" title="function not covered" >    st</span>atic get DEFAULT_BASE_URL() {
+<span class="cstat-no" title="statement not covered" >        if (typeof window !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >            return (window &amp;&amp; window.location &amp;&amp; window.location.origin) || '';</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return '';</span>
+    }
+}
+<span class="cstat-no" title="statement not covered" >SnConfigModel.DEFAULT_SERVICE_TOKEN = 'odata.svc';</span>
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig | snconfigbehavior_1.SnConfigBehavior.AllowFromCommandLine,
+        FieldDescription: 'URL to the repository (e.g.: demo.sensenet.com)',
+        Question: 'Please enter your Sense/Net Site URL(e.g.:demo.sensenet.com):',
+    }),
+    __metadata("design:type", String)
+], SnConfigModel.prototype, "RepositoryUrl", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig | snconfigbehavior_1.SnConfigBehavior.AllowFromCommandLine,
+        FieldDescription: 'The service token for the OData Endpoint',
+        Question: 'Please enter your Sense/Net Site URL(e.g.:demo.sensenet.com):',
+    }),
+    __metadata("design:type", String)
+], SnConfigModel.prototype, "ODataToken", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'Template will be stored in that format',
+        Question: 'Please specify the template format for the key of the JWT Web Token in the localStorage (e.g.: sn-${siteName}-${tokenName})'
+    }),
+    __metadata("design:type", String)
+], SnConfigModel.prototype, "JwtTokenKeyTemplate", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'The behavoir how long the JWT tokens should be persisted, can be "session" or "expiration"',
+        Question: ''
+    }),
+    __metadata("design:type", String)
+], SnConfigModel.prototype, "JwtTokenPersist", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'The default values to select when triggering an OData Action',
+        Question: ''
+    }),
+    __metadata("design:type", Object)
+], SnConfigModel.prototype, "DefaultSelect", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'The values are required when triggering an OData Action and will be always included in Select statements',
+        Question: ''
+    }),
+    __metadata("design:type", Object)
+], SnConfigModel.prototype, "RequiredSelect", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'The default OData metadata option',
+        Question: ''
+    }),
+    __metadata("design:type", String)
+], SnConfigModel.prototype, "DefaultMetadata", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'The default OData inline count option',
+        Question: ''
+    }),
+    __metadata("design:type", String)
+], SnConfigModel.prototype, "DefaultInlineCount", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'The default OData references to expand',
+        Question: ''
+    }),
+    __metadata("design:type", Object)
+], SnConfigModel.prototype, "DefaultExpand", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'The default OData $top parameter for querying / fetching content',
+        Question: ''
+    }),
+    __metadata("design:type", Number)
+], SnConfigModel.prototype, "DefaultTop", void 0);
+<span class="cstat-no" title="statement not covered" >__decorate([</span>
+    snconfigfielddecorator_1.SnConfigField({
+        Behavior: snconfigbehavior_1.SnConfigBehavior.AllowFromConfig,
+        FieldDescription: 'Default chunk size for chunked uploads',
+        Question: ''
+    }),
+    __metadata("design:type", Number)
+], SnConfigModel.prototype, "ChunkSize", void 0);
+<span class="cstat-no" title="statement not covered" >exports.SnConfigModel = SnConfigModel;</span>
+//# sourceMappingURL=snconfigmodel.js.map</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 13 2017 12:52:17 GMT+0200 (Central Europe Daylight Time)
+</div>
+</div>
+<script src="..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\sorter.js"></script>
+</body>
+</html>

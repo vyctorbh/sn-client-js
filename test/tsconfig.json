@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "module": "commonjs",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es2015",
+        "sourceMap": true,
+        "inlineSources": true,
+        "types": [
+            "node",
+            "mocha",
+            "chai"
+        ],
+        "strict": true,
+        "noUnusedLocals": true
+    }
+}

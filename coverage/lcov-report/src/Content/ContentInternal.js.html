@@ -1,0 +1,1946 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Content/ContentInternal.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/Content</a> ContentInternal.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/302</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/181</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/120</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/295</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+<span class="cstat-no" title="statement not covered" >Object.defineProperty(exports, "__esModule", { value: true });</span>
+const rxjs_1 = <span class="cstat-no" title="statement not covered" >require("@reactivex/rxjs");</span>
+const BinaryField_1 = <span class="cstat-no" title="statement not covered" >require("../BinaryField");</span>
+const ContentReferences_1 = <span class="cstat-no" title="statement not covered" >require("../ContentReferences");</span>
+const ContentSerializer_1 = <span class="cstat-no" title="statement not covered" >require("../ContentSerializer");</span>
+const Query_1 = <span class="cstat-no" title="statement not covered" >require("../Query");</span>
+const SN_1 = <span class="cstat-no" title="statement not covered" >require("../SN");</span>
+const TypeGuards_1 = <span class="cstat-no" title="statement not covered" >require("./TypeGuards");</span>
+class ContentInternal {
+<span class="fstat-no" title="function not covered" >    co</span>nstructor(_options, _repository, contentType) {
+<span class="cstat-no" title="statement not covered" >        this._repository = _repository;</span>
+<span class="cstat-no" title="statement not covered" >        this.contentType = contentType;</span>
+<span class="cstat-no" title="statement not covered" >        this._type = this.contentType.name;</span>
+<span class="cstat-no" title="statement not covered" >        this._isSaved = false;</span>
+<span class="cstat-no" title="statement not covered" >        this._lastSavedFields = {};</span>
+<span class="cstat-no" title="statement not covered" >        this._isOperationInProgress = false;</span>
+<span class="cstat-no" title="statement not covered" >        this._fieldHandlerCache = [];</span>
+<span class="cstat-no" title="statement not covered" >        this.Stringify = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >ContentSerializer_1.ContentSerializer.Stringify(this.tryGetAsSaved());</span></span>
+<span class="cstat-no" title="statement not covered" >        this.CreateQuery = <span class="fstat-no" title="function not covered" >(b</span>uild, params) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error('No Content path provided for querying');</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return new Query_1.FinializedQuery(build, this._repository, this.Path, params);</span>
+        };
+<span class="cstat-no" title="statement not covered" >        Object.assign(this, _options);</span>
+<span class="cstat-no" title="statement not covered" >        Object.assign(this._lastSavedFields, _options);</span>
+<span class="cstat-no" title="statement not covered" >        this.updateReferenceFields();</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t _odata() {
+<span class="cstat-no" title="statement not covered" >        return this._repository.GetODataApi();</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t Type() {
+<span class="cstat-no" title="statement not covered" >        return this._type;</span>
+    }
+<span class="fstat-no" title="function not covered" >    se</span>t Type(newType) {
+<span class="cstat-no" title="statement not covered" >        this._type = newType;</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t IsSaved() {
+<span class="cstat-no" title="statement not covered" >        return this._isSaved;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tRepository() {
+<span class="cstat-no" title="statement not covered" >        return this._repository;</span>
+    }
+<span class="fstat-no" title="function not covered" >    up</span>dateLastSavedFields(newFields) {
+<span class="cstat-no" title="statement not covered" >        Object.assign(this._lastSavedFields, newFields);</span>
+<span class="cstat-no" title="statement not covered" >        this._isSaved = true;</span>
+<span class="cstat-no" title="statement not covered" >        Object.assign(this, newFields);</span>
+<span class="cstat-no" title="statement not covered" >        this.updateReferenceFields();</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t SavedFields() {
+<span class="cstat-no" title="statement not covered" >        return !this.IsSaved ? {} : Object.assign({}, this._lastSavedFields);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tChanges() {
+        const changedFields = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >        for (const field in this.GetFields()) {</span>
+            const currentField = <span class="cstat-no" title="statement not covered" >this[field];</span>
+<span class="cstat-no" title="statement not covered" >            if (currentField !== this._lastSavedFields[field]) {</span>
+<span class="cstat-no" title="statement not covered" >                if (currentField instanceof ContentReferences_1.ContentReferenceField) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (currentField.IsDirty) {</span>
+<span class="cstat-no" title="statement not covered" >                        changedFields[field] = currentField.GetValue();</span>
+                    }
+                }
+                else <span class="cstat-no" title="statement not covered" >if (currentField instanceof ContentReferences_1.ContentListReferenceField) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (currentField.IsDirty) {</span>
+<span class="cstat-no" title="statement not covered" >                        changedFields[field] = currentField.GetValue();</span>
+                    }
+                }
+                else <span class="cstat-no" title="statement not covered" >if (currentField instanceof BinaryField_1.BinaryField) {</span>
+                }
+                else {
+<span class="cstat-no" title="statement not covered" >                    changedFields[field] = this[field];</span>
+                }
+            }
+        }
+<span class="cstat-no" title="statement not covered" >        return changedFields;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tFields(skipEmpties) {
+        const fieldsToPost = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >        this.GetSchema().FieldSettings.forEach(<span class="fstat-no" title="function not covered" >(s</span>) =&gt; {</span>
+            let value = <span class="cstat-no" title="statement not covered" >this[s.Name];</span>
+<span class="cstat-no" title="statement not covered" >            if (this[s.Name] &amp;&amp; this[s.Name].GetValue) {</span>
+<span class="cstat-no" title="statement not covered" >                value = this[s.Name].GetValue();</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (this[s.Name] &amp;&amp; this[s.Name].GetDownloadUrl) {</span>
+<span class="cstat-no" title="statement not covered" >                value = this[s.Name].GetDownloadUrl();</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if ((!skipEmpties &amp;&amp; value !== undefined) || (skipEmpties &amp;&amp; value)) {</span>
+<span class="cstat-no" title="statement not covered" >                fieldsToPost[s.Name] = value;</span>
+            }
+        });
+<span class="cstat-no" title="statement not covered" >        return fieldsToPost;</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t IsDirty() {
+<span class="cstat-no" title="statement not covered" >        return Object.keys(this.GetChanges()).length &gt; 0;</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t IsOperationInProgress() {
+<span class="cstat-no" title="statement not covered" >        return this._isOperationInProgress;</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t IsValid() {
+        const schema = <span class="cstat-no" title="statement not covered" >this.GetSchema();</span>
+        const missings = <span class="cstat-no" title="statement not covered" >schema.FieldSettings</span>
+            .filter(<span class="fstat-no" title="function not covered" >(s</span>) =&gt; <span class="cstat-no" title="statement not covered" >s.Compulsory &amp;&amp; !this[s.Name])</span>;
+<span class="cstat-no" title="statement not covered" >        return missings.length === 0;</span>
+    }
+<span class="fstat-no" title="function not covered" >    up</span>dateReferenceFields() {
+        const referenceSettings = <span class="cstat-no" title="statement not covered" >this.GetSchema().FieldSettings.filter(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; <span class="cstat-no" title="statement not covered" >SN_1.FieldSettings.isFieldSettingOfType(f, SN_1.FieldSettings.ReferenceFieldSetting))</span>;</span>
+<span class="cstat-no" title="statement not covered" >        referenceSettings.push(...[{ Type: 'ReferenceFieldSetting', Name: 'EffectiveAllowedChildTypes', AllowMultiple: true }, { Type: 'ReferenceFieldSetting', Name: 'AllowedChildTypes', AllowMultiple: true }]);</span>
+<span class="cstat-no" title="statement not covered" >        referenceSettings.forEach(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            if (!this._fieldHandlerCache[f.Name]) {</span>
+<span class="cstat-no" title="statement not covered" >                this._fieldHandlerCache[f.Name] = f.AllowMultiple ? new ContentReferences_1.ContentListReferenceField(this[f.Name], f, this._repository) : new ContentReferences_1.ContentReferenceField(this[f.Name], f, this._repository);</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                this._fieldHandlerCache[f.Name].HandleLoaded(this[f.Name]);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            this[f.Name] = this._fieldHandlerCache[f.Name];</span>
+        });
+        const binarySettings = <span class="cstat-no" title="statement not covered" >this.GetSchema().FieldSettings.filter(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; <span class="cstat-no" title="statement not covered" >SN_1.FieldSettings.isFieldSettingOfType(f, SN_1.FieldSettings.BinaryFieldSetting))</span>;</span>
+<span class="cstat-no" title="statement not covered" >        binarySettings.forEach(<span class="fstat-no" title="function not covered" >(s</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            if (!(this[s.Name] instanceof BinaryField_1.BinaryField)) {</span>
+                const mediaResourceObject = <span class="cstat-no" title="statement not covered" >this[s.Name];</span>
+<span class="cstat-no" title="statement not covered" >                this[s.Name] = new BinaryField_1.BinaryField(mediaResourceObject, this, s);</span>
+            }
+        });
+    }
+<span class="fstat-no" title="function not covered" >    tr</span>yGetAsSaved() {
+<span class="cstat-no" title="statement not covered" >        if (TypeGuards_1.isSavedContent(this)) {</span>
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        throw new Error('Contnet is not saved.');</span>
+    }
+<span class="fstat-no" title="function not covered" >    De</span>lete(permanently) {
+<span class="cstat-no" title="statement not covered" >        if (this.Id) {</span>
+<span class="cstat-no" title="statement not covered" >            this._isOperationInProgress = true;</span>
+            const fields = <span class="cstat-no" title="statement not covered" >this.GetFields();</span>
+            const observable = <span class="cstat-no" title="statement not covered" >this._odata.Delete(this.Id, permanently);</span>
+<span class="cstat-no" title="statement not covered" >            observable.subscribe(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                this._repository.Events.Trigger.ContentDeleted({</span>
+                    ContentData: fields,
+                    Permanently: permanently || false
+                });
+<span class="cstat-no" title="statement not covered" >                this._isOperationInProgress = false;</span>
+            }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this._repository.Events.Trigger.ContentDeleteFailed({</span>
+                    Content: this.tryGetAsSaved(),
+                    Permanently: permanently || false,
+                    Error: err
+                });
+<span class="cstat-no" title="statement not covered" >                this._isOperationInProgress = false;</span>
+            });
+<span class="cstat-no" title="statement not covered" >            return observable;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return rxjs_1.Observable.of(undefined);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>name(newDisplayName, newName) {
+<span class="cstat-no" title="statement not covered" >        this._isOperationInProgress = true;</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.IsSaved) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content is not saved. You can rename only saved content!');</span>
+        }
+        const fields = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >        if (newDisplayName) {</span>
+<span class="cstat-no" title="statement not covered" >            fields.DisplayName = newDisplayName;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (newName) {</span>
+<span class="cstat-no" title="statement not covered" >            fields.Name = newName;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this.Save(fields);</span>
+    }
+<span class="fstat-no" title="function not covered" >    sa</span>veContentInternal(fields, override) {
+        const originalFields = <span class="cstat-no" title="statement not covered" >this.GetFields();</span>
+<span class="cstat-no" title="statement not covered" >        if (fields) {</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.Id) {</span>
+                const err = <span class="cstat-no" title="statement not covered" >new Error('Content Id not present');</span>
+<span class="cstat-no" title="statement not covered" >                this._repository.Events.Trigger.ContentModificationFailed({</span>
+                    Content: this.tryGetAsSaved(),
+                    Fields: fields,
+                    Error: err
+                });
+<span class="cstat-no" title="statement not covered" >                throw err;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (!this.IsSaved) {</span>
+                const err = <span class="cstat-no" title="statement not covered" >new Error('The Content is not saved to the Repository, Save it before updating.');</span>
+<span class="cstat-no" title="statement not covered" >                this._repository.Events.Trigger.ContentModificationFailed({</span>
+                    Content: this.tryGetAsSaved(),
+                    Fields: fields,
+                    Error: err
+                });
+<span class="cstat-no" title="statement not covered" >                throw err;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (override) {</span>
+                const request = <span class="cstat-no" title="statement not covered" >this._odata.Put(this.Id, fields)</span>
+                    .map(<span class="fstat-no" title="function not covered" >(n</span>ewFields) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this.updateLastSavedFields(newFields);</span>
+<span class="cstat-no" title="statement not covered" >                    this._repository.Events.Trigger.ContentModified({</span>
+                        Content: this.tryGetAsSaved(),
+                        OriginalFields: originalFields,
+                        Changes: fields
+                    });
+<span class="cstat-no" title="statement not covered" >                    return this.tryGetAsSaved();</span>
+                }).share();
+<span class="cstat-no" title="statement not covered" >                request.subscribe(<span class="fstat-no" title="function not covered" >()</span> =&gt; { }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    this._repository.Events.Trigger.ContentModificationFailed({ Content: this.tryGetAsSaved(), Fields: fields, Error: err });</span>
+                });
+<span class="cstat-no" title="statement not covered" >                return request;</span>
+            }
+            else {
+                const request = <span class="cstat-no" title="statement not covered" >this._odata.Patch(this.Id, fields)</span>
+                    .map(<span class="fstat-no" title="function not covered" >(n</span>ewFields) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this.updateLastSavedFields(newFields);</span>
+<span class="cstat-no" title="statement not covered" >                    this._repository.Events.Trigger.ContentModified({ Content: this.tryGetAsSaved(), OriginalFields: originalFields, Changes: fields });</span>
+<span class="cstat-no" title="statement not covered" >                    return this.tryGetAsSaved();</span>
+                }).share();
+<span class="cstat-no" title="statement not covered" >                request.subscribe(<span class="fstat-no" title="function not covered" >()</span> =&gt; { }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    this._repository.Events.Trigger.ContentModificationFailed({ Content: this.tryGetAsSaved(), Fields: fields, Error: err });</span>
+                });
+<span class="cstat-no" title="statement not covered" >                return request;</span>
+            }
+        }
+<span class="cstat-no" title="statement not covered" >        if (!this.IsSaved) {</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.Path) {</span>
+                const err = <span class="cstat-no" title="statement not covered" >new Error('Cannot create content without a valid Path specified');</span>
+<span class="cstat-no" title="statement not covered" >                this._repository.Events.Trigger.ContentCreateFailed({ Content: this, Error: err });</span>
+<span class="cstat-no" title="statement not covered" >                throw err;</span>
+            }
+            const request = <span class="cstat-no" title="statement not covered" >this._odata.Post(this.Path, Object.assign({ Type: this.Type }, this.GetFields(true)))</span>
+                .map(<span class="fstat-no" title="function not covered" >(r</span>esp) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!resp.Id) {</span>
+<span class="cstat-no" title="statement not covered" >                    throw Error('Error: No content Id in response!');</span>
+                }
+<span class="cstat-no" title="statement not covered" >                this.updateLastSavedFields(resp);</span>
+<span class="cstat-no" title="statement not covered" >                this._repository.HandleLoadedContent(this.tryGetAsSaved());</span>
+<span class="cstat-no" title="statement not covered" >                this._isSaved = true;</span>
+<span class="cstat-no" title="statement not covered" >                return this.tryGetAsSaved();</span>
+            }).share();
+<span class="cstat-no" title="statement not covered" >            request.subscribe(<span class="fstat-no" title="function not covered" >(c</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                this._repository.Events.Trigger.ContentCreated({ Content: this.tryGetAsSaved() });</span>
+            }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this._repository.Events.Trigger.ContentCreateFailed({ Content: this, Error: err });</span>
+            });
+<span class="cstat-no" title="statement not covered" >            return request;</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            if (!this.IsDirty) {</span>
+<span class="cstat-no" title="statement not covered" >                return rxjs_1.Observable.of(this.tryGetAsSaved());</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                if (!this.Id) {</span>
+<span class="cstat-no" title="statement not covered" >                    throw new Error('Content Id not present');</span>
+                }
+                const changes = <span class="cstat-no" title="statement not covered" >this.GetChanges();</span>
+                const request = <span class="cstat-no" title="statement not covered" >this._odata.Patch(this.Id, changes)</span>
+                    .map(<span class="fstat-no" title="function not covered" >(r</span>esp) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this.updateLastSavedFields(resp);</span>
+<span class="cstat-no" title="statement not covered" >                    return this.tryGetAsSaved();</span>
+                }).share();
+<span class="cstat-no" title="statement not covered" >                request.subscribe(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    this._repository.Events.Trigger.ContentModified({ Content: this.tryGetAsSaved(), Changes: changes, OriginalFields: originalFields });</span>
+                }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this._repository.Events.Trigger.ContentModificationFailed({ Content: this.tryGetAsSaved(), Fields: changes, Error: err });</span>
+                });
+<span class="cstat-no" title="statement not covered" >                return request;</span>
+            }
+        }
+    }
+<span class="fstat-no" title="function not covered" >    Sa</span>ve(fields, override) {
+<span class="cstat-no" title="statement not covered" >        this._isOperationInProgress = true;</span>
+        const saveObservable = <span class="cstat-no" title="statement not covered" >this.saveContentInternal(fields, override).share();</span>
+<span class="cstat-no" title="statement not covered" >        saveObservable.subscribe(<span class="fstat-no" title="function not covered" >(s</span>uccess) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            this._isOperationInProgress = false;</span>
+        }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >            this._isOperationInProgress = false;</span>
+        });
+<span class="cstat-no" title="statement not covered" >        return saveObservable;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>load(actionName) {
+<span class="cstat-no" title="statement not covered" >        if (!this.IsSaved) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content has to be saved to reload');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (!this.Id &amp;&amp; !this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content Id or Path has to be provided');</span>
+        }
+        let selectFields = <span class="cstat-no" title="statement not covered" >'all';</span>
+        let expandFields;
+<span class="cstat-no" title="statement not covered" >        if (actionName) {</span>
+            const fieldSettings = <span class="cstat-no" title="statement not covered" >this.GetSchema().FieldSettings.filter(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                return actionName === 'edit' &amp;&amp; f.VisibleEdit</span>
+                    || actionName === 'view' &amp;&amp; f.VisibleBrowse;
+            });
+<span class="cstat-no" title="statement not covered" >            selectFields = fieldSettings.map(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; <span class="cstat-no" title="statement not covered" >f.Name)</span>;</span>
+<span class="cstat-no" title="statement not covered" >            expandFields = fieldSettings.filter(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; <span class="cstat-no" title="statement not covered" >SN_1.FieldSettings.isFieldSettingOfType(f, SN_1.FieldSettings.ReferenceFieldSetting))</span></span>
+                .map(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; <span class="cstat-no" title="statement not covered" >f.Name)</span>;
+        }
+<span class="cstat-no" title="statement not covered" >        return this._repository.Load(this.Id || this.Path, {</span>
+            select: selectFields,
+            expand: expandFields
+        });
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>loadFields(...fields) {
+<span class="cstat-no" title="statement not covered" >        if (!this.IsSaved) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content has to be saved to reload');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (!this.Id &amp;&amp; !this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content Id or Path has to be provided');</span>
+        }
+        const toExpand = <span class="cstat-no" title="statement not covered" >this.GetSchema().FieldSettings.filter(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; <span class="cstat-no" title="statement not covered" >fields.indexOf(f.Name) &gt;= 0 &amp;&amp; SN_1.FieldSettings.isFieldSettingOfType(f, SN_1.FieldSettings.ReferenceFieldSetting))</span></span>
+            .map(<span class="fstat-no" title="function not covered" >(f</span>) =&gt; <span class="cstat-no" title="statement not covered" >f.Name)</span>;
+<span class="cstat-no" title="statement not covered" >        return this._repository.Load(this.Id || this.Path, {</span>
+            select: fields,
+            expand: toExpand
+        });
+    }
+<span class="fstat-no" title="function not covered" >    Ac</span>tions(scenario) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.Get({</span>
+            path: SN_1.ODataHelper.joinPaths(this.GetFullPath(), 'Actions'),
+            params: {
+                scenario
+            }
+        })
+            .map(<span class="fstat-no" title="function not covered" >(r</span>esp) =&gt; {
+<span class="cstat-no" title="statement not covered" >            return resp.d.Actions;</span>
+        });
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tAllowedChildTypes(options) {
+<span class="cstat-no" title="statement not covered" >        return this.AllowedChildTypes.GetContent(options);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tEffectiveAllowedChildTypes(options) {
+<span class="cstat-no" title="statement not covered" >        return this.EffectiveAllowedChildTypes.GetContent(options);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tOwner(options) {
+<span class="cstat-no" title="statement not covered" >        return this.Owner.GetContent(options);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Cr</span>eator(options) {
+<span class="cstat-no" title="statement not covered" >        return this.CreatedBy.GetContent(options);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Mo</span>difier(options) {
+<span class="cstat-no" title="statement not covered" >        return this.ModifiedBy.GetContent(options);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ch</span>eckedOutBy(options) {
+<span class="cstat-no" title="statement not covered" >        return this.CheckedOutTo.GetContent(options);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ch</span>ildren(options) {
+<span class="cstat-no" title="statement not covered" >        if (!this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('No path specified');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this._odata.Fetch({</span>
+            path: this.Path,
+            params: options
+        }).map(<span class="fstat-no" title="function not covered" >(r</span>esp) =&gt; {
+<span class="cstat-no" title="statement not covered" >            return resp.d.results.map(<span class="fstat-no" title="function not covered" >(c</span>) =&gt; <span class="cstat-no" title="statement not covered" >this._repository.HandleLoadedContent(c))</span>;</span>
+        });
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tVersions(options) {
+<span class="cstat-no" title="statement not covered" >        return this.Versions.GetContent(options);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tWorkspace(options) {
+<span class="cstat-no" title="statement not covered" >        return this.Workspace.GetContent(options);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ch</span>eckout() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'CheckOut', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ch</span>eckIn(checkInComments) {
+        let action;
+<span class="cstat-no" title="statement not covered" >        (typeof checkInComments !== 'undefined') ?</span>
+            action = { name: 'CheckIn', id: this.Id, isAction: true, params: ['checkInComments'] } :
+            action = { name: 'CheckIn', id: this.Id, isAction: true };
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction(action, { data: { checkInComments: checkInComments ? checkInComments : '' } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Un</span>doCheckout() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'UndoCheckOut', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Fo</span>rceUndoCheckout() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'ForceUndoCheckout', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ap</span>prove() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'Approve', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>ject(rejectReason) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'Reject', id: this.Id, isAction: true, params: ['rejectReason'] }, { data: { rejectReason: rejectReason ? rejectReason : '' } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Pu</span>blish() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'Publish', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>storeVersion(version) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'Publish', id: this.Id, isAction: true, requiredParams: ['version'] }, { data: { version: version ? version : '' } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>store(destination, newname) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'Restore', id: this.Id, isAction: true, params: ['destination', 'newname'] }, {</span>
+            data: {
+                destination: destination ? destination : '',
+                newname: newname ? newname : ''
+            }
+        });
+    }
+<span class="fstat-no" title="function not covered" >    Mo</span>veTo(toPath) {
+<span class="cstat-no" title="statement not covered" >        if (!this.IsSaved) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content not saved!');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (!this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('No Path provided for the content');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (!this.Name) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('No Name provided for the content');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (toPath.indexOf(this.Path) === 0) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content cannot be moved below itself');</span>
+        }
+        const request = <span class="cstat-no" title="statement not covered" >this._odata.CreateCustomAction({ name: 'MoveTo', id: this.Id, isAction: true, requiredParams: ['targetPath'] }, { data: { targetPath: toPath } });</span>
+        const fromPath = <span class="cstat-no" title="statement not covered" >this.Path;</span>
+        const newPath = <span class="cstat-no" title="statement not covered" >SN_1.ODataHelper.joinPaths(toPath, this.Name);</span>
+<span class="cstat-no" title="statement not covered" >        request.subscribe(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            this.Path = newPath;</span>
+<span class="cstat-no" title="statement not covered" >            this.updateLastSavedFields({ Path: newPath });</span>
+<span class="cstat-no" title="statement not covered" >            this._repository.Events.Trigger.ContentMoved({</span>
+                Content: this.tryGetAsSaved(),
+                From: fromPath,
+                To: toPath
+            });
+        }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >            this._repository.Events.Trigger.ContentMoveFailed({</span>
+                Content: this.tryGetAsSaved(),
+                From: fromPath,
+                To: toPath,
+                Error: err
+            });
+        });
+<span class="cstat-no" title="statement not covered" >        return request;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Co</span>pyTo(path) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'CopyTo', id: this.Id, isAction: true, requiredParams: ['targetPath'] }, { data: { targetPath: path } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ad</span>dAllowedChildTypes(contentTypes) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'AddAllowedChildTypes', id: this.Id, isAction: true, requiredParams: ['contentTypes'] }, { data: { contentTypes } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>moveAllowedChildTypes(contentTypes) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'RemoveAllowedChildTypes', id: this.Id, isAction: true, requiredParams: ['contentTypes'] }, { data: { contentTypes } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tSchema() {
+<span class="cstat-no" title="statement not covered" >        return this._repository.GetSchema(this.contentType);</span>
+    }
+<span class="fstat-no" title="function not covered" >    st</span>atic Create(options, newContent, repository) {
+        const created = <span class="cstat-no" title="statement not covered" >new ContentInternal(options, repository, newContent);</span>
+<span class="cstat-no" title="statement not covered" >        if (newContent) {</span>
+<span class="cstat-no" title="statement not covered" >            created.Type = newContent.name;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return created;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Se</span>tPermissions(arg) {
+<span class="cstat-no" title="statement not covered" >        if (arg instanceof Array) {</span>
+<span class="cstat-no" title="statement not covered" >            return this._odata.CreateCustomAction({ name: 'SetPermissions', id: this.Id, isAction: true, requiredParams: ['entryList'] }, { data: { entryList: arg } });</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            return this._odata.CreateCustomAction({ name: 'SetPermissions', path: this.Path, isAction: true, requiredParams: ['inheritance'] }, { data: { inheritance: arg } });</span>
+        }
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tPermission(identity) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetPermission', id: this.Id, isAction: false, params: ['identity'] }, { data: { identity: identity ? identity : '' } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ha</span>sPermission(permissions, identity) {
+        let params = <span class="cstat-no" title="statement not covered" >`permissions=${permissions.join(',')}`;</span>
+<span class="cstat-no" title="statement not covered" >        if (identity &amp;&amp; identity.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            params += `&amp;identity=${identity.Path}`;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this._repository.Ajax(`${this.GetFullPath()}/HasPermission?${params}`, 'GET');</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ta</span>keOwnership(userOrGroup) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'TakeOwnership', id: this.Id, isAction: true, params: ['userOrGroup'] }, { data: { userOrGroup: userOrGroup ? userOrGroup : '' } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Sa</span>veQuery(query, displayName, queryType) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'SaveQuery', id: this.Id, isAction: true, requiredParams: ['query', 'displayName', 'queryType'] }, { data: { query, displayName: displayName ? displayName : '', queryType } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tQueries(onlyPublic = <span class="branch-0 cbranch-no" title="branch not covered" >true)</span> {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetQueries', id: this.Id, isAction: false, noCache: true, requiredParams: ['onlyPublic'] }, { data: { onlyPublic } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Fi</span>nalize() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'FinalizeContent', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ta</span>keLockOver(userId) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'TakeLockOver', id: this.Id, isAction: true, params: ['user'] }, { data: { user: userId ? userId : '' } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>buildIndex(recursive, rebuildLevel) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'RebuildIndex', id: this.Id, isAction: true, params: ['recursive', 'rebuildLevel'] }, { data: { recursive: recursive ? recursive : false, rebuildLevel: rebuildLevel ? rebuildLevel : 0 } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>buildIndexSubtree() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'RebuildIndexSubtree', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>freshIndexSubtree() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'RefreshIndexSubtree', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ch</span>eckPreviews(generateMissing) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'CheckPreviews', id: this.Id, isAction: true, params: ['generateMissing'] }, { data: { generateMissing: generateMissing ? generateMissing : false } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>generatePreviews() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'RegeneratePreviews', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tPageCount() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetPageCount', id: this.Id, isAction: true });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Pr</span>eviewAvailable(page) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'PreviewAvailable', id: this.Id, isAction: false, requiredParams: ['page'] }, { data: { page } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tPreviewImagesForOData() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetPreviewImagesForOData', id: this.Id, isAction: false });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tExistingPreviewImagesForOData() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetExistingPreviewImagesForOData', id: this.Id, isAction: false });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tAllowedChildTypesFromCTD() {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetAllowedChildTypesFromCTD', id: this.Id, isAction: false });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tRelatedIdentities(level, kind) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetRelatedIdentities', id: this.Id, isAction: true, requiredParams: ['level', 'kind'] }, { data: { level, kind } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tRelatedPermissions(level, explicitOnly, member, includedTypes) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetRelatedPermissions', id: this.Id, isAction: true, requiredParams: ['level', 'explicitOnly', 'member', 'includedTypes'] }, { data: { level, explicitOnly, member, includedTypes } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tRelatedItems(level, explicitOnly, member, permissions) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetRelatedItems', id: this.Id, isAction: true, requiredParams: ['level', 'explicitOnly', 'member', 'permissions'] }, { data: { level, explicitOnly, member, permissions } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tRelatedIdentitiesByPermissions(level, kind, permissions) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetRelatedIdentitiesByPermissions', id: this.Id, isAction: true, requiredParams: ['level', 'kind', 'permissions'] }, { data: { level, kind, permissions } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tRelatedItemsOneLevel(level, member, permissions) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetRelatedItemsOneLevel', id: this.Id, isAction: true, requiredParams: ['level', 'member', 'permissions'] }, { data: { level, member, permissions } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tAllowedUsers(permissions) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetAllowedUsers', id: this.Id, isAction: true, requiredParams: ['permissions'] }, { data: { permissions } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tParentGroups(directOnly) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'GetParentGroups', id: this.Id, isAction: true, requiredParams: ['directOnly'] }, { data: { directOnly } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ad</span>dMembers(contentIds) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'AddMembers', id: this.Id, isAction: true, requiredParams: ['contentIds'] }, { data: { contentIds } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Re</span>moveMembers(contentIds) {
+<span class="cstat-no" title="statement not covered" >        return this._odata.CreateCustomAction({ name: 'RemoveMembers', id: this.Id, isAction: true, requiredParams: ['contentIds'] }, { data: { contentIds } });</span>
+    }
+<span class="fstat-no" title="function not covered" >    Up</span>load(contentType = <span class="branch-0 cbranch-no" title="branch not covered" >'File',</span> fileName, overwrite = <span class="branch-0 cbranch-no" title="branch not covered" >true,</span> useChunk = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span> propertyName = <span class="branch-0 cbranch-no" title="branch not covered" >'Binary',</span> fileText) {
+<span class="cstat-no" title="statement not covered" >        console.warn(`This method is deprecated, please use 'UploadFile' or 'UploadText' instead `);</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            throw Error('No Path provided!');</span>
+        }
+        const data = <span class="cstat-no" title="statement not covered" >{</span>
+            ContentType: contentType,
+            FileName: fileName,
+            Overwrite: overwrite,
+            UseChunk: useChunk,
+            propertyName,
+        };
+<span class="cstat-no" title="statement not covered" >        if (typeof fileText !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >            data.FileText = fileText;</span>
+        }
+        const uploadCreation = <span class="cstat-no" title="statement not covered" >this._odata.Upload(this.Path, data, true);</span>
+<span class="cstat-no" title="statement not covered" >        uploadCreation.subscribe({</span>
+            next: <span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
+<span class="cstat-no" title="statement not covered" >                return this._odata.Upload(this.Path, {</span>
+                    ContentType: contentType,
+                    FileName: fileName,
+                    Overwrite: overwrite,
+                    ChunkToken: response
+                }, false);
+            }
+        });
+<span class="cstat-no" title="statement not covered" >        return uploadCreation;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Up</span>loadFile(uploadOptions) {
+<span class="cstat-no" title="statement not covered" >        return this._repository.UploadFile(Object.assign({}, uploadOptions, { Parent: (this.tryGetAsSaved()) }));</span>
+    }
+<span class="fstat-no" title="function not covered" >    Up</span>loadText(uploadOptions) {
+        const Parent = <span class="cstat-no" title="statement not covered" >this.tryGetAsSaved();</span>
+<span class="cstat-no" title="statement not covered" >        return this._repository.UploadTextAsFile(Object.assign({}, uploadOptions, { Parent }));</span>
+    }
+<span class="fstat-no" title="function not covered" >    Up</span>loadFromDropEvent(uploadOptions) {
+        const Parent = <span class="cstat-no" title="statement not covered" >this.tryGetAsSaved();</span>
+<span class="cstat-no" title="statement not covered" >        return this._repository.UploadFromDropEvent(Object.assign({}, uploadOptions, { Parent }));</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t ParentPath() {
+<span class="cstat-no" title="statement not covered" >        if (!this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            throw Error('No Path provided for the Content');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (!this.IsSaved) {</span>
+<span class="cstat-no" title="statement not covered" >            throw Error('Content has to be saved to retrieve the ParentPath');</span>
+        }
+        const segments = <span class="cstat-no" title="statement not covered" >this.Path.split('/');</span>
+<span class="cstat-no" title="statement not covered" >        segments.pop();</span>
+<span class="cstat-no" title="statement not covered" >        return segments.join('/');</span>
+    }
+<span class="fstat-no" title="function not covered" >    ge</span>t ParentContentPath() {
+<span class="cstat-no" title="statement not covered" >        return SN_1.ODataHelper.getContentURLbyPath(this.ParentPath);</span>
+    }
+<span class="fstat-no" title="function not covered" >    Is</span>ParentOf(childContent) {
+<span class="cstat-no" title="statement not covered" >        return this._repository === childContent.GetRepository() &amp;&amp; this.IsSaved &amp;&amp;</span>
+            (this.Id &amp;&amp; childContent.ParentId === this.Id
+                || childContent.ParentPath === this.Path);
+    }
+<span class="fstat-no" title="function not covered" >    Is</span>ChildOf(parentContent) {
+<span class="cstat-no" title="statement not covered" >        return this._repository === parentContent.GetRepository() &amp;&amp; parentContent.IsSaved &amp;&amp;</span>
+            (parentContent.Id &amp;&amp; this.ParentId === parentContent.Id
+                || this.ParentPath === parentContent.Path);
+    }
+<span class="fstat-no" title="function not covered" >    Is</span>AncestorOf(descendantContent) {
+<span class="cstat-no" title="statement not covered" >        if (!descendantContent.Path || !this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            throw Error('No path provided');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this._repository === descendantContent.GetRepository() &amp;&amp; this.IsSaved &amp;&amp; descendantContent.Path.indexOf(this.Path + '/') === 0;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Is</span>DescendantOf(ancestorContent) {
+<span class="cstat-no" title="statement not covered" >        if (!ancestorContent.Path || !this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            throw Error('No path provided');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this._repository === ancestorContent.GetRepository() &amp;&amp; ancestorContent.IsSaved &amp;&amp; this.Path.indexOf(ancestorContent.Path + '/') === 0;</span>
+    }
+<span class="fstat-no" title="function not covered" >    Ge</span>tFullPath() {
+<span class="cstat-no" title="statement not covered" >        if (!this.IsSaved) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content has to be saved to get the full Path');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (this.Id) {</span>
+<span class="cstat-no" title="statement not covered" >            return SN_1.ODataHelper.getContentUrlbyId(this.Id);</span>
+        }
+        else <span class="cstat-no" title="statement not covered" >if (this.Path) {</span>
+<span class="cstat-no" title="statement not covered" >            return SN_1.ODataHelper.getContentURLbyPath(this.Path);</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            throw new Error('Content Id or Path has to be provided to get the full Path');</span>
+        }
+    }
+}
+<span class="cstat-no" title="statement not covered" >exports.ContentInternal = ContentInternal;</span>
+//# sourceMappingURL=ContentInternal.js.map</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Oct 31 2017 15:27:48 GMT+0100 (Central Europe Standard Time)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

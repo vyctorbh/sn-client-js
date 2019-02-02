@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Resources.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\prettify.css" />
+    <link rel="stylesheet" href="..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\index.html">All files</a> / <a href="index.html">src</a> Resources.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/64</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/64</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+<span class="cstat-no" title="statement not covered" >Object.defineProperty(exports, "__esModule", { value: true });</span>
+class Ctd {
+}
+<span class="cstat-no" title="statement not covered" >exports.Ctd = Ctd;</span>
+class CtdApplication {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdApplication = CtdApplication;</span>
+class CtdApplicationOverride {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdApplicationOverride = CtdApplicationOverride;</span>
+class CtdAspect {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdAspect = CtdAspect;</span>
+class CtdContentLink {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdContentLink = CtdContentLink;</span>
+class CtdContentList {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdContentList = CtdContentList;</span>
+class CtdContentType {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdContentType = CtdContentType;</span>
+class CtdCustomList {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdCustomList = CtdCustomList;</span>
+class CtdCustomListItem {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdCustomListItem = CtdCustomListItem;</span>
+class CtdDevice {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdDevice = CtdDevice;</span>
+class CtdDocumentLibrary {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdDocumentLibrary = CtdDocumentLibrary;</span>
+class CtdDomain {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdDomain = CtdDomain;</span>
+class CtdDomains {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdDomains = CtdDomains;</span>
+class CtdEmail {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdEmail = CtdEmail;</span>
+class CtdExecutableFile {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdExecutableFile = CtdExecutableFile;</span>
+class CtdExportToCsvApplication {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdExportToCsvApplication = CtdExportToCsvApplication;</span>
+class CtdFieldSettingContent {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdFieldSettingContent = CtdFieldSettingContent;</span>
+class CtdFile {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdFile = CtdFile;</span>
+class CtdFolder {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdFolder = CtdFolder;</span>
+class CtdGenericContent {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdGenericContent = CtdGenericContent;</span>
+class CtdGenericODataApplication {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdGenericODataApplication = CtdGenericODataApplication;</span>
+class CtdGroup {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdGroup = CtdGroup;</span>
+class CtdHtmlTemplate {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdHtmlTemplate = CtdHtmlTemplate;</span>
+class CtdHttpHandlerApplication {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdHttpHandlerApplication = CtdHttpHandlerApplication;</span>
+class CtdHttpStatusApplication {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdHttpStatusApplication = CtdHttpStatusApplication;</span>
+class CtdImage {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdImage = CtdImage;</span>
+class CtdImageLibrary {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdImageLibrary = CtdImageLibrary;</span>
+class CtdImgResizeApplication {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdImgResizeApplication = CtdImgResizeApplication;</span>
+class CtdIndexingSettings {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdIndexingSettings = CtdIndexingSettings;</span>
+class CtdItemList {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdItemList = CtdItemList;</span>
+class CtdLibrary {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdLibrary = CtdLibrary;</span>
+class CtdListItem {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdListItem = CtdListItem;</span>
+class CtdLoggingSettings {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdLoggingSettings = CtdLoggingSettings;</span>
+class CtdMemo {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdMemo = CtdMemo;</span>
+class CtdMemoList {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdMemoList = CtdMemoList;</span>
+class CtdOrganizationalUnit {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdOrganizationalUnit = CtdOrganizationalUnit;</span>
+class CtdPortalRoot {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdPortalRoot = CtdPortalRoot;</span>
+class CtdPortalSettings {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdPortalSettings = CtdPortalSettings;</span>
+class CtdPreviewImage {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdPreviewImage = CtdPreviewImage;</span>
+class CtdProfileDomain {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdProfileDomain = CtdProfileDomain;</span>
+class CtdProfiles {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdProfiles = CtdProfiles;</span>
+class CtdQuery {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdQuery = CtdQuery;</span>
+class CtdResource {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdResource = CtdResource;</span>
+class CtdResources {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdResources = CtdResources;</span>
+class CtdRssApplication {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdRssApplication = CtdRssApplication;</span>
+class CtdRuntimeContentContainer {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdRuntimeContentContainer = CtdRuntimeContentContainer;</span>
+class CtdSettings {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdSettings = CtdSettings;</span>
+class CtdSite {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdSite = CtdSite;</span>
+class CtdSites {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdSites = CtdSites;</span>
+class CtdSmartFolder {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdSmartFolder = CtdSmartFolder;</span>
+class CtdSystemFile {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdSystemFile = CtdSystemFile;</span>
+class CtdSystemFolder {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdSystemFolder = CtdSystemFolder;</span>
+class CtdTask {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdTask = CtdTask;</span>
+class CtdTaskList {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdTaskList = CtdTaskList;</span>
+class CtdTrashBag {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdTrashBag = CtdTrashBag;</span>
+class CtdTrashBin {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdTrashBin = CtdTrashBin;</span>
+class CtdUser {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdUser = CtdUser;</span>
+class CtdUserProfile {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdUserProfile = CtdUserProfile;</span>
+class CtdWebServiceApplication {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdWebServiceApplication = CtdWebServiceApplication;</span>
+class CtdWorkspace {
+}
+<span class="cstat-no" title="statement not covered" >exports.CtdWorkspace = CtdWorkspace;</span>
+class Error_ContentRepository {
+}
+<span class="cstat-no" title="statement not covered" >exports.Error_ContentRepository = Error_ContentRepository;</span>
+class Error_Portal {
+}
+<span class="cstat-no" title="statement not covered" >exports.Error_Portal = Error_Portal;</span>
+class Error_Storage {
+}
+<span class="cstat-no" title="statement not covered" >exports.Error_Storage = Error_Storage;</span>
+//# sourceMappingURL=Resources.js.map</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Oct 31 2017 15:27:48 GMT+0100 (Central Europe Standard Time)
+</div>
+</div>
+<script src="..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\sorter.js"></script>
+</body>
+</html>

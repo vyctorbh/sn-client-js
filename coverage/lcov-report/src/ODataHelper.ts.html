@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/ODataHelper.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\prettify.css" />
+    <link rel="stylesheet" href="..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\index.html">All files</a> / <a href="index.html">src</a> ODataHelper.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>55/55</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>51/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>11/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>52/52</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">198x</span>
+<span class="cline-any cline-yes">198x</span>
+<span class="cline-any cline-yes">198x</span>
+<span class="cline-any cline-yes">198x</span>
+<span class="cline-any cline-yes">200x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">198x</span>
+<span class="cline-any cline-yes">107x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">107x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">106x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">407x</span>
+<span class="cline-any cline-yes">823x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">823x</span>
+<span class="cline-any cline-yes">245x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">823x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">407x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @module ODataHelper
+ * @preferred
+ *
+ * @description Helper methods for OData Operations
+ */ /** */
+&nbsp;
+// TODO: ezeket vhova kivezetni
+import { SnConfigModel } from './Config/snconfigmodel';
+import { IContent } from './Content';
+import { IODataParams, ODataFieldParameter } from './ODataApi';
+import { Content } from './SN';
+&nbsp;
+const ODATA_PARAMS = ['select', 'expand', 'orderby', 'top', 'skip', 'filter', 'format', 'inlinecount'];
+export const DATA_ROOT = 'OData.svc';
+&nbsp;
+export const combineODataFieldParameters: &lt;T extends IContent&gt;(...params: ODataFieldParameter&lt;T&gt;[]) =&gt; ODataFieldParameter&lt;Content&lt;T&gt;&gt;
+    = &lt;T extends IContent&gt;(...params: ODataFieldParameter&lt;T&gt;[]) =&gt; {
+        params.forEach((param) =&gt; {
+            if (typeof param === 'string') {
+                param = [param];
+            }
+        });
+        params = params.filter((param) =&gt; param &amp;&amp; param.length &gt; 0);
+        return [...new Set([].concat.apply([], params))] as ODataFieldParameter&lt;T&gt;;
+    };
+&nbsp;
+/**
+ * Method to build proper parameter string to OData requests based on the given option Object.
+ *
+ * Checks whether a given parameter is standard OData param or not and based on this information this params get the '$' sign.
+ *
+ * If there's no select param given, or it is empty 'Id' is the default, so only this field will be on the content in the JSON result. To get all the field values, without selection, set it to 'all', but please avoid this if it's possible.
+ * @param {IODataOptions} options Represents an ODataOptions obejct based through the IODataOptions interface. Holds the possible url parameters as properties.
+ * @returns {string} String with the url params in the correct format e.g. '$select=DisplayName,Index'&amp;$top=2&amp;metadata=no'.
+ */
+export const buildUrlParamString: &lt;T extends IContent = IContent&gt;(config: SnConfigModel, options?: IODataParams&lt;T&gt;) =&gt; string =
+    &lt;T extends IContent&gt;(config: SnConfigModel, options?: IODataParams&lt;T&gt;): string =&gt; {
+        if (!options) {
+            return '';
+        }
+&nbsp;
+        if (config.RequiredSelect === 'all' || config.DefaultSelect === 'all' || options.select === 'all') {
+            options.select = undefined;
+        } else {
+            options.select = combineODataFieldParameters&lt;any&gt;(config.RequiredSelect, options.select || config.DefaultSelect) as any;
+        }
+        options.metadata = options.metadata || config.DefaultMetadata;
+        options.inlinecount = options.inlinecount || config.DefaultInlineCount;
+        options.expand = options.expand || config.DefaultExpand as any;
+        options.top = options.top || config.DefaultTop;
+&nbsp;
+        const segments: { name: string, value: string }[] = [];
+        // tslint:disable-next-line:forin
+        for (const key in options) {
+            const name = ODATA_PARAMS.indexOf(key) &gt; -1 ? `$${key}` : key;
+            const plainValue = (options as any)[key];
+            let parsedValue = plainValue;
+            if (plainValue instanceof Array &amp;&amp; plainValue.length &amp;&amp; plainValue.length &gt; 0) {
+                parsedValue = plainValue.map((v) =&gt; v.join &amp;&amp; v.join(' ') || v).join(',');
+            }
+            if (name &amp;&amp; parsedValue &amp;&amp; parsedValue.length) {
+                segments.push({ name, value: parsedValue });
+            }
+        }
+&nbsp;
+        return segments.map((s) =&gt; `${s.name}=${s.value}`).join('&amp;');
+    };
+&nbsp;
+/**
+ * Method that gets the URL that refers to a single item in the Sense/Net Content Repository
+ * @param path {string} Path that you want to format.
+ * @returns {string} Path in entity format e.g. /workspaces('project') from /workspaces/project
+ */
+export const getContentURLbyPath: (path: string) =&gt; string = (path: string): string =&gt; {
+    if (typeof path === 'undefined' || path.indexOf('/') &lt; 0 || path.length &lt;= 1) {
+        throw new Error('This is not a valid path.');
+    }
+    if (isItemPath(path)) {
+        return path;
+    }
+&nbsp;
+    const lastSlashPosition = path.lastIndexOf('/');
+    const name = path.substring(lastSlashPosition + 1);
+    const parentPath = path.substring(0, lastSlashPosition);
+&nbsp;
+    let url;
+    if (name.indexOf('Root') &gt; -1) {
+        url = `${parentPath}/('${name}')`;
+    } else {
+        url = `${parentPath}('${name}')`;
+    }
+    return url;
+};
+/**
+ * Method that gets the URL that refers to a single item in the Sense/Net Content Repository by its Id
+ * @param id {number} Id of the Content.
+ * @returns {string} e.g. /content(123)
+ */
+export const getContentUrlbyId: (id: number) =&gt; string = (id: number) =&gt; {
+    return `/content(${id})`;
+};
+/**
+ * Method that tells if a path is an item path.
+ * @param path {string} Path that you want to test.
+ * @returns {boolean} Returns if the given path is a path of a Content or not.
+ */
+export const isItemPath: (path: string) =&gt; boolean = (path) =&gt; {
+    return path.indexOf("('") &gt;= 0 &amp;&amp; path.indexOf("')") === path.length - 2;
+};
+&nbsp;
+/**
+ * Method that allows to join paths without multiple or missing slashes
+ * @param args The list of the paths to join
+ */
+export const joinPaths = (...args: string[]) =&gt; {
+    const trimSlashes = (path: string) =&gt; {
+        if (path.endsWith('/')) {
+            path = path.substring(0, path.length - 1);
+        }
+        if (path.startsWith('/')) {
+            path = path.substring(1, path.length);
+        }
+        return path;
+    };
+&nbsp;
+    return args.map(trimSlashes).join('/');
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 15 2017 10:33:34 GMT+0100 (Central Europe Standard Time)
+</div>
+</div>
+<script src="..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\sorter.js"></script>
+</body>
+</html>
